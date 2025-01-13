@@ -20,8 +20,8 @@ export default function SignIn() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
-  const onSignIn = () => {
-    if (!email || !password) {
+  const OnSignIn = () => {
+    if (!email && !password) {
       ToastAndroid.show("Please Enter Email & Password", ToastAndroid.LONG);
       return;
     }
@@ -36,7 +36,10 @@ export default function SignIn() {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage, errorCode);
-        if (errorCode === "auth/invalid-credential") {
+        if (
+          errorCode === "auth/invalid-email" ||
+          errorCode === "auth/invalid-credential"
+        ) {
           ToastAndroid.show("Invalid Credentials", ToastAndroid.LONG);
         }
       });
@@ -108,7 +111,7 @@ export default function SignIn() {
         <TextInput
           style={styles.input}
           placeholder="Enter Email"
-          onChange={(value) => setEmail(value)}
+          onChangeText={(value) => setEmail(value)}
         />
       </View>
 
@@ -131,13 +134,13 @@ export default function SignIn() {
           secureTextEntry={true}
           style={styles.input}
           placeholder="Enter Password"
-          onChange={(value) => setPassword(value)}
+          onChangeText={(value) => setPassword(value)}
         />
       </View>
 
       {/* Sign In Button */}
       <TouchableOpacity
-        onPress={onSignIn}
+        onPress={OnSignIn}
         style={{
           padding: 20,
           backgroundColor: Colors.PRIMARY,
