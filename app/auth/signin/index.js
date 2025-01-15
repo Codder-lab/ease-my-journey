@@ -29,6 +29,7 @@ export default function SignIn() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        router.replace("/Trips");
         console.log(user);
         // ...
       })
