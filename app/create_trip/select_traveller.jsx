@@ -6,7 +6,7 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigation } from "expo-router";
+import { useNavigation, Link } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { SelectTravellerList } from "../../constants/Options";
 import OptionCard from "../../components/CreateTrip/OptionCard";
@@ -94,16 +94,24 @@ export default function SelectTraveller() {
             marginTop: 20,
           }}
         >
-          <Text
+          <Link
+            href={"/create_trip/select_dates"}
             style={{
+              width: "100%",
               textAlign: "center",
-              color: Colors.WHITE,
-              fontFamily: "outfit-medium",
-              fontSize: 20,
             }}
           >
-            Continue
-          </Text>
+            <Text
+              style={{
+                textAlign: "center",
+                color: Colors.WHITE,
+                fontFamily: "outfit-medium",
+                fontSize: 20,
+              }}
+            >
+              Continue
+            </Text>
+          </Link>
         </TouchableOpacity>
       </View>
     </ScrollView>
