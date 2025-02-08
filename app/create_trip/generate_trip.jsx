@@ -1,17 +1,26 @@
 import { View, Text } from "react-native";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Colors } from "../../constants/Colors";
 import { Image } from "expo-image";
 import { CreateTripContext } from "../../context/create_trip_context";
 import { AI_PROMPT } from "../../constants/Options";
+import { chatSession } from "../../configs/AiModel";
+import { useRouter } from "expo-router";
+import { auth, db } from "../../configs/FirebaseConfig";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function GenerateTrip() {
   const { tripData, setTripData } = useContext(CreateTripContext);
-  useEffect(() => {
-    tripData && GenerateAiTrip();
-  }, [tripData]);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+  const user = auth.currentUser;
 
-  const GenerateAiTrip = () => {
+  useEffect(() => {
+    GenerateAiTrip();
+  }, []);
+
+  const GenerateAiTrip = async () => {
+    setLoading(true);
     const FINAL_PROMPT = AI_PROMPT.replace(
       "{location}",
       tripData?.locationInfo?.name
@@ -24,6 +33,22 @@ export default function GenerateTrip() {
       .replace("{totalNight}", tripData?.totalNoOfDays - 1);
 
     console.log(FINAL_PROMPT);
+
+    const result = await chatSession.sendMessage(FINAL_PROMPT);
+    console.log(result.response.text());
+    const tripResponse = JSON.parse(result.response.text());
+
+    setLoading(false);
+
+    const docId = Date.now().toString();
+    const _result = await setDoc(doc(db, "UserTrips", docId), {
+      userEmail: user.email,
+      tripPlan: tripResponse, // AI Result
+      tripData: JSON.stringify(tripData), // User Selection Data
+      docId: docId,
+    });
+
+    router.push("(tabs)/Trips");
   };
 
   return (
@@ -63,7 +88,7 @@ export default function GenerateTrip() {
       <Text
         style={{
           fontFamily: "outfit",
-          color: Colors.GRAY,
+          color: "#7d7d7d",
           fontSize: 20,
           textAlign: "center",
         }}
