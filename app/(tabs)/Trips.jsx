@@ -43,7 +43,7 @@ export default function Trips() {
 
   return (
     <ScrollView
-      contentContainerStyle={{ flexGrow: 1, paddingBottom: 20 }} // Allows scrolling if content is smaller than the screen
+      contentContainerStyle={{ flexGrow: 1, paddingBottom: 100 }} // Allows scrolling if content is smaller than the screen
       keyboardShouldPersistTaps="handled" // Ensures touch events work inside ScrollView
       showsVerticalScrollIndicator={false} // Optional: Hides the scrollbar
       style={{

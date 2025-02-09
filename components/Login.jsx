@@ -32,12 +32,12 @@ export default function Login() {
             fontFamily: "outfit",
             fontSize: 17,
             textAlign: "center",
-            color: Colors.GRAY,
+            color: "#7d7d7d",
             marginTop: 20,
           }}
         >
           Discover your next adventure effortlessly. Personalized itineraries at
-          your fingertips. Travel smarter with AI-driven insights."
+          your fingertips. Travel smarter with AI-driven insights.
         </Text>
 
         <TouchableOpacity
