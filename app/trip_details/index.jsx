@@ -1,9 +1,12 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import moment from "moment";
 import FlightInfo from "../../components/TripDetails/FlightInfo";
+import { he } from "date-fns/locale";
+import HotelList from "../../components/TripDetails/HotelList";
+import DailyItinerary from "../../components/TripDetails/DailyItinerary";
 
 export default function TripDetails() {
   const navigation = useNavigation();
@@ -32,7 +35,7 @@ export default function TripDetails() {
   }, []);
 
   return (
-    <View>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <Image
         source={{
           uri:
@@ -113,9 +116,13 @@ export default function TripDetails() {
         <FlightInfo flightData={tripDetails?.tripPlan?.flightDetails} />
 
         {/* Hotels Information */}
+        <HotelList hotelList={tripDetails?.tripPlan?.hotelOptions} />
 
         {/* Trip Day Planner Information */}
+        <DailyItinerary
+          dailyItinerary={tripDetails?.tripPlan?.dailyItinerary}
+        />
       </View>
-    </View>
+    </ScrollView>
   );
 }

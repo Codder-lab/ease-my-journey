@@ -7,13 +7,18 @@ export default function FlightInfo({ flightData }) {
     <View
       style={{
         marginTop: 20,
+        borderWidth: 1,
+        borderColor: Colors.LIGHT_GRAY,
+        padding: 10,
+        borderRadius: 15,
       }}
     >
       <View
         style={{
           display: "flex",
           flexDirection: "row",
-          justifyContent: "center",
+          justifyContent: "space-between",
+          alignItems: "center",
         }}
       >
         <Text
@@ -30,7 +35,7 @@ export default function FlightInfo({ flightData }) {
             backgroundColor: Colors.PRIMARY,
             padding: 10,
             width: 100,
-            borderRadius: 7,
+            borderRadius: 15,
           }}
         >
           <Text
@@ -52,7 +57,7 @@ export default function FlightInfo({ flightData }) {
           margin: 5,
         }}
       >
-        Price: ₹ {flightData?.approximatePriceINR} (approx)
+        Price: ₹ {flightData?.approximatePriceINR} (approx.)
       </Text>
     </View>
   );
