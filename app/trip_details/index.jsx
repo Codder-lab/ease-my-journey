@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import moment from "moment";
+import FlightInfo from "../../components/TripDetails/FlightInfo";
 
 export default function TripDetails() {
   const navigation = useNavigation();
@@ -63,7 +64,7 @@ export default function TripDetails() {
             fontSize: 25,
           }}
         >
-          {tripDetails?.tripPlan?.travelPlan?.location}
+          {tripDetails?.tripPlan?.tripDetails?.location}
         </Text>
         <View
           style={{
@@ -104,9 +105,16 @@ export default function TripDetails() {
             color: "#7d7d7d",
           }}
         >
-          {formatData(tripDetails.tripData).traveller.icon}{" "}
-          {formatData(tripDetails.tripData).traveller.title}
+          {formatData(tripDetails.tripData)?.traveller?.icon}{" "}
+          {formatData(tripDetails.tripData)?.traveller?.title}
         </Text>
+
+        {/* Flight Information */}
+        <FlightInfo flightData={tripDetails?.tripPlan?.flightDetails} />
+
+        {/* Hotels Information */}
+
+        {/* Trip Day Planner Information */}
       </View>
     </View>
   );

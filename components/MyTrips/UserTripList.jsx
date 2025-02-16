@@ -55,15 +55,18 @@ export default function UserTripList({ userTrips }) {
             <Text
               style={{
                 fontFamily: "outfit-medium",
-                fontSize: 20,
+                fontSize: 16,
+                flexShrink: 1, // Prevents overflow and allows shrinking
               }}
+              numberOfLines={1} // Keeps text to a single line and truncates with "..."
+              ellipsizeMode="tail" // Adds "..." at the end if text overflows
             >
-              {userTrips[0]?.tripPlan?.travelPlan?.location}
+              {userTrips[0]?.tripPlan?.tripDetails?.location}
             </Text>
             <Text
               style={{
                 fontFamily: "outfit",
-                fontSize: 15,
+                fontSize: 13,
                 color: "#7d7d7d",
               }}
             >
@@ -82,7 +85,7 @@ export default function UserTripList({ userTrips }) {
               }
               style={{
                 backgroundColor: Colors.PRIMARY,
-                padding: 15,
+                padding: 12,
                 borderRadius: 15,
               }}
             >
@@ -91,7 +94,7 @@ export default function UserTripList({ userTrips }) {
                   color: Colors.WHITE,
                   textAlign: "center",
                   fontFamily: "outfit-medium",
-                  fontSize: 15,
+                  fontSize: 12,
                 }}
               >
                 See your plan

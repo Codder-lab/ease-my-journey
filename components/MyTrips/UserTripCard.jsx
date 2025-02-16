@@ -42,18 +42,18 @@ export default function UserTripCard({ trip }) {
         <Text
           style={{
             fontFamily: "outfit-medium",
-            fontSize: 18,
+            fontSize: 16,
             flexShrink: 1, // Prevents overflow and allows shrinking
           }}
           numberOfLines={1} // Keeps text to a single line and truncates with "..."
           ellipsizeMode="tail" // Adds "..." at the end if text overflows
         >
-          {trip.tripPlan?.travelPlan?.location}
+          {trip.tripPlan?.tripDetails?.location}
         </Text>
         <Text
           style={{
             fontFamily: "outfit",
-            fontSize: 14,
+            fontSize: 12,
             color: "#7d7d7d",
           }}
         >
