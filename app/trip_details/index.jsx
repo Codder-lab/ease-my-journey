@@ -4,7 +4,6 @@ import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import moment from "moment";
 import FlightInfo from "../../components/TripDetails/FlightInfo";
-import { he } from "date-fns/locale";
 import HotelList from "../../components/TripDetails/HotelList";
 import DailyItinerary from "../../components/TripDetails/DailyItinerary";
 
