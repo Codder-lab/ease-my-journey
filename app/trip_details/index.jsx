@@ -28,6 +28,7 @@ export default function TripDetails() {
       headerShown: true,
       headerTransparent: true,
       headerTitle: "",
+      headerTintColor: Colors.WHITE,
     });
 
     setTripDetails(JSON.parse(trip));
