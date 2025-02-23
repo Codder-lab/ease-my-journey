@@ -12,6 +12,7 @@ import { Colors } from "../../../constants/Colors";
 import { auth, db } from "../../../configs/FirebaseConfig";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function SignUp() {
   const navigation = useNavigation();
@@ -19,6 +20,7 @@ export default function SignUp() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [fullName, setFullName] = useState();
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     navigation.setOptions({
@@ -71,6 +73,7 @@ export default function SignUp() {
         style={{
           fontFamily: "outfit-bold",
           fontSize: 30,
+          color: Colors.ICON_DARKER,
         }}
       >
         Create New Account
@@ -86,7 +89,7 @@ export default function SignUp() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
-            color: "#7d7d7d",
+            color: Colors.ICON_DARK,
           }}
         >
           Full Name
@@ -108,7 +111,7 @@ export default function SignUp() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
-            color: "#7d7d7d",
+            color: Colors.ICON_DARK,
           }}
         >
           Email
@@ -121,26 +124,32 @@ export default function SignUp() {
       </View>
 
       {/* Password */}
-      <View
-        style={{
-          marginTop: 20,
-        }}
-      >
+      <View style={{ marginTop: 20 }}>
         <Text
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
-            color: "#7d7d7d",
+            color: Colors.ICON_DARK,
           }}
         >
           Password
         </Text>
-        <TextInput
-          secureTextEntry={true}
-          style={styles.input}
-          placeholder="Enter Password"
-          onChangeText={(value) => setPassword(value)}
-        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            secureTextEntry={!showPassword} // 👁️ Toggle visibility
+            style={[/*styles.input,*/ { flex: 1 }]}
+            placeholder="Enter Password"
+            onChangeText={(value) => setPassword(value)}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={24}
+              color="#7d7d7d"
+              style={{ marginRight: 10 }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Create Account Button */}
@@ -194,5 +203,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor: Colors.GRAY,
     fontFamily: "outfit",
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: Colors.GRAY,
+    padding: 5,
   },
 });

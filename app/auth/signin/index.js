@@ -19,6 +19,7 @@ export default function SignIn() {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [showPassword, setShowPassword] = useState(false);
 
   const OnSignIn = () => {
     if (!email && !password) {
@@ -69,6 +70,7 @@ export default function SignIn() {
           fontFamily: "outfit-bold",
           fontSize: 30,
           paddingTop: 20,
+          color: Colors.ICON_DARKER,
         }}
       >
         Let's Sign You In
@@ -77,7 +79,7 @@ export default function SignIn() {
         style={{
           fontFamily: "outfit-bold",
           fontSize: 30,
-          color: "#7d7d7d",
+          color: Colors.ICON_DARK,
           marginTop: 20,
         }}
       >
@@ -87,7 +89,7 @@ export default function SignIn() {
         style={{
           fontFamily: "outfit-bold",
           fontSize: 30,
-          color: "#7d7d7d",
+          color: Colors.ICON_DARK,
           marginTop: 10,
         }}
       >
@@ -104,7 +106,7 @@ export default function SignIn() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
-            color: "#7d7d7d",
+            color: Colors.ICON_DARK,
           }}
         >
           Email
@@ -117,27 +119,46 @@ export default function SignIn() {
       </View>
 
       {/* Password */}
-      <View
-        style={{
-          marginTop: 20,
-        }}
-      >
+      <View style={{ marginTop: 20 }}>
         <Text
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
-            color: "#7d7d7d",
+            color: Colors.ICON_DARK,
           }}
         >
           Password
         </Text>
-        <TextInput
-          secureTextEntry={true}
-          style={styles.input}
-          placeholder="Enter Password"
-          onChangeText={(value) => setPassword(value)}
-        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            secureTextEntry={!showPassword} // 👁️ Toggle visibility
+            style={[/*styles.input,*/ { flex: 1 }]}
+            placeholder="Enter Password"
+            onChangeText={(value) => setPassword(value)}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+            <Ionicons
+              name={showPassword ? "eye" : "eye-off"}
+              size={24}
+              color="#7d7d7d"
+              style={{ marginRight: 10 }}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
+
+      {/* Forgot Password */}
+      <TouchableOpacity onPress={() => router.push("auth/forgotpassword")}>
+        <Text
+          style={{
+            color: Colors.ICON_DARKER,
+            marginTop: 10,
+            textAlign: "right",
+          }}
+        >
+          Forgot Password?
+        </Text>
+      </TouchableOpacity>
 
       {/* Sign In Button */}
       <TouchableOpacity
@@ -188,7 +209,15 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     borderRadius: 15,
-    borderColor: Colors.GRAY,
+    borderColor: "#7d7d7d",
     fontFamily: "outfit",
+  },
+  passwordContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 15,
+    borderColor: "#7d7d7d",
+    padding: 4,
   },
 });

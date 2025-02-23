@@ -57,6 +57,7 @@ export default function SelectBudget() {
           fontFamily: "outfit-bold",
           fontSize: 35,
           marginTop: 20,
+          color: Colors.ICON_DARKER,
         }}
       >
         Budget
@@ -71,6 +72,7 @@ export default function SelectBudget() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
+            color: Colors.ICON_DARK,
           }}
         >
           Choose spending habit for your trip

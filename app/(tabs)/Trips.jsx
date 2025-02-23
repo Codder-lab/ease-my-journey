@@ -65,6 +65,7 @@ export default function Trips() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 35,
+            color: Colors.ICON_DARKER,
           }}
         >
           My Trips
@@ -72,7 +73,11 @@ export default function Trips() {
         <TouchableOpacity
           onPress={() => router.push("/create_trip/search_place")}
         >
-          <Ionicons name="add-circle-outline" size={50} color="black" />
+          <Ionicons
+            name="add-circle-outline"
+            size={50}
+            color={Colors.ICON_DARKER}
+          />
         </TouchableOpacity>
       </View>
       {loading && <ActivityIndicator size={"large"} color={Colors.PRIMARY} />}

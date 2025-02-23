@@ -32,6 +32,7 @@ export default function ReviewTrip() {
           fontFamily: "outfit-bold",
           fontSize: 35,
           marginTop: 20,
+          color: Colors.ICON_DARKER,
         }}
       >
         Review your trip
@@ -45,6 +46,7 @@ export default function ReviewTrip() {
           style={{
             fontFamily: "outfit-bold",
             fontSize: 20,
+            color: Colors.ICON_DARK,
           }}
         >
           Before generating your trip, please review your selection

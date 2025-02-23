@@ -6,6 +6,10 @@ export const Colors = {
     PRIMARY: '#000',
     GRAY: '7d7d7d',
     LIGHT_GRAY: '#f2f2f2',
+    ICON: '#49d9eb',
+    ICON_DARK: '#2ca4b0',
+    ICON_LIGHT: '#54dcec',
+    ICON_DARKER: '#216474',
   light: {
     text: '#11181C',
     background: '#fff',

@@ -17,7 +17,6 @@ export default function Discover() {
   const [trending, setTrending] = useState([]);
   const [visibleTrending, setVisibleTrending] = useState([]);
   const [search, setSearch] = useState("");
-  const [favorites, setFavorites] = useState([]);
   const [destLoadCount, setDestLoadCount] = useState(5); // Number of destinations to load
   const [trendLoadCount, setTrendLoadCount] = useState(5); // Number of trending trips to load
 
@@ -164,12 +163,6 @@ export default function Discover() {
     setVisibleTrending(trending.slice(0, newCount));
   };
 
-  const handleFavorite = (id) => {
-    setFavorites((prev) =>
-      prev.includes(id) ? prev.filter((fav) => fav !== id) : [...prev, id]
-    );
-  };
-
   const filteredDestinations = visibleDestinations.filter((item) =>
     item.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -196,13 +189,6 @@ export default function Discover() {
                 <View style={styles.cardFooter}>
                   <Text style={styles.name}>{item.name}</Text>
                   <Text style={styles.rating}>⭐ {item.rating}</Text>
-                  <TouchableOpacity onPress={() => handleFavorite(item.id)}>
-                    <AntDesign
-                      name={favorites.includes(item.id) ? "heart" : "hearto"}
-                      size={24}
-                      color={favorites.includes(item.id) ? "red" : "gray"}
-                    />
-                  </TouchableOpacity>
                 </View>
               </TouchableOpacity>
             )}
@@ -255,6 +241,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginTop: 15,
     fontFamily: "outfit-bold",
+    color: Colors.ICON_DARKER,
   },
   searchBar: {
     borderWidth: 1,

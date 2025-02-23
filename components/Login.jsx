@@ -23,6 +23,7 @@ export default function Login() {
             fontFamily: "outfit-bold",
             textAlign: "center",
             marginTop: 10,
+            color: Colors.ICON_DARK,
           }}
         >
           EaseMyJourney

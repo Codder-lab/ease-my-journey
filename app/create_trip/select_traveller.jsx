@@ -48,6 +48,7 @@ export default function SelectTraveller() {
             fontSize: 35,
             fontFamily: "outfit-bold",
             marginTop: 20,
+            color: Colors.ICON_DARKER,
           }}
         >
           Who's Travelling?
@@ -62,6 +63,7 @@ export default function SelectTraveller() {
             style={{
               fontFamily: "outfit-bold",
               fontSize: 23,
+              color: Colors.ICON_DARK,
             }}
           >
             Choose your travellers

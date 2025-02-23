@@ -9,7 +9,7 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.PRIMARY,
+        tabBarActiveTintColor: Colors.ICON_DARKER,
       }}
     >
       <Tabs.Screen
@@ -17,7 +17,11 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "My Trips",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="location-sharp" size={24} color="black" />
+            <Ionicons
+              name="location-sharp"
+              size={24}
+              color={Colors.ICON_DARKER}
+            />
           ),
         }}
       />
@@ -26,7 +30,11 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Discover",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="compass-sharp" size={24} color="black" />
+            <Ionicons
+              name="compass-sharp"
+              size={24}
+              color={Colors.ICON_DARKER}
+            />
           ),
         }}
       />
@@ -35,7 +43,7 @@ export default function TabLayout() {
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color }) => (
-            <Ionicons name="person" size={24} color="black" />
+            <Ionicons name="person" size={24} color={Colors.ICON_DARKER} />
           ),
         }}
       />

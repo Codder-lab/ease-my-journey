@@ -62,6 +62,7 @@ export default function SelectDate() {
           fontFamily: "outfit-bold",
           fontSize: 35,
           marginTop: 20,
+          color: Colors.ICON_DARKER,
         }}
       >
         Travel Dates
@@ -77,7 +78,7 @@ export default function SelectDate() {
           minDate={new Date()}
           maxRangeDuration={10}
           selectedRangeStyle={{
-            backgroundColor: Colors.PRIMARY,
+            backgroundColor: Colors.ICON_DARKER,
           }}
           selectedDayTextStyle={{
             color: Colors.WHITE,
