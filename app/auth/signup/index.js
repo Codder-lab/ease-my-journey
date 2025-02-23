@@ -9,8 +9,9 @@ import {
 import React, { useState, useEffect } from "react";
 import { useNavigation, useRouter } from "expo-router";
 import { Colors } from "../../../constants/Colors";
-import { auth } from "../../../configs/FirebaseConfig";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../../../configs/FirebaseConfig";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function SignUp() {
   const navigation = useNavigation();
@@ -32,19 +33,28 @@ export default function SignUp() {
     }
 
     createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed up
+      .then(async (userCredential) => {
         const user = userCredential.user;
-        router.replace("/Trips");
-        console.log(user);
-        // ...
-      })
 
+        // ✅ Update Firebase Auth Profile with Full Name
+        await updateProfile(user, {
+          displayName: fullName,
+        });
+
+        // ✅ Save User Data to Firestore
+        await setDoc(doc(db, "users", user.uid), {
+          fullName: fullName,
+          email: email,
+          createdAt: new Date(),
+        });
+
+        router.replace("/Trips");
+        console.log("User Created:", user);
+      })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
-        // ..
+        console.log("Error:", errorMessage);
+        ToastAndroid.show(errorMessage, ToastAndroid.BOTTOM);
       });
   };
 
