@@ -9,11 +9,6 @@ export default function HotelCard({ item }) {
     GetGooglePhotoRef();
   }, []);
 
-  /*const GetGooglePhotoRef = async () => {
-    const result = await GetPhotoRef(item.hotelName);
-    setPhotoRef(result);
-  };*/
-
   const GetGooglePhotoRef = async () => {
     try {
       const result = await GetPhotoRef(item.hotelName);

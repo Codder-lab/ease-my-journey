@@ -8,7 +8,6 @@ import {
   TextInput,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { AntDesign } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
 
 export default function Discover() {

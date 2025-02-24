@@ -26,14 +26,6 @@ export default function UserTripCard({ trip }) {
         alignItems: "center",
       }}
     >
-      {/*<Image
-        source={require("../../assets/images/login.jpg")}
-        style={{
-          width: 100,
-          height: 100,
-          borderRadius: 15,
-        }}
-      />*/}
       <Image
         source={{
           uri:
