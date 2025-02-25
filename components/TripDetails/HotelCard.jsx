@@ -16,7 +16,7 @@ export default function HotelCard({ item }) {
       // Check if photos array exists
       if (result?.results?.[0]?.photos?.[0]?.photo_reference) {
         const photoRef = result.results[0].photos[0].photo_reference;
-        console.log("Photo Reference:", photoRef); // ✅ Should show the correct photo reference
+        // console.log("Photo Reference:", photoRef); // ✅ Should show the correct photo reference
         setPhotoRef(photoRef);
       } else {
         console.log("No photo reference found");

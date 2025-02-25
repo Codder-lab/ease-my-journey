@@ -7,6 +7,7 @@ import {
   Alert,
   Modal,
   TextInput,
+  ToastAndroid,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { router, useNavigation, useRouter } from "expo-router";
@@ -54,7 +55,11 @@ export default function Profile() {
 
   const handleLogout = () => {
     signOut(auth)
-      .then(() => router.replace("auth/signin"))
+      .then(() => {
+        console.log("User signed out successfully");
+        ToastAndroid.show("User signed out successfully", ToastAndroid.TOP);
+        router.replace("auth/signin");
+      })
       .catch((error) => Alert.alert("Logout Error", error.message));
   };
 
