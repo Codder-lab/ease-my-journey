@@ -1,8 +1,17 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/Colors";
 
 export default function FlightInfo({ flightData }) {
+  const handleBooking = () => {
+    if (flightData?.bookingUrl) {
+      Linking.openURL(flightData?.bookingUrl).catch((err) =>
+        console.error("Failed to open URL:", err)
+      );
+    } else {
+      console.warn("No booking URL found");
+    }
+  }
   return (
     <View
       style={{
@@ -31,6 +40,7 @@ export default function FlightInfo({ flightData }) {
         </Text>
 
         <TouchableOpacity
+        onPress={handleBooking}
           style={{
             backgroundColor: Colors.PRIMARY,
             padding: 10,

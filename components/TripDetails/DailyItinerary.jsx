@@ -63,7 +63,7 @@ export default function DailyItinerary({ dailyItinerary = {} }) {
                   color: Colors.PRIMARY,
                 }}
               >
-                Ticket Price:{" "}
+                Price:{" "}
                 <Text style={{ fontFamily: "outfit-bold" }}>
                   ₹ {place?.approximateCostINR ?? "N/A"}
                 </Text>{" "}

@@ -61,7 +61,7 @@ export default function ForgotPassword() {
 const styles = StyleSheet.create({
   container: {
     padding: 25,
-    paddingTop: 50,
+    paddingTop: 60,
     backgroundColor: Colors.WHITE,
     height: "100%",
   },

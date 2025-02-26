@@ -70,7 +70,7 @@ export default function UserTripList({ userTrips }) {
                 color: "#7d7d7d",
               }}
             >
-              {moment(LatestTrip.startDate).format("DD MMM YYYY")}
+              {moment(LatestTrip.startDate).format("DD MMM YYYY")} - {moment(LatestTrip.endDate).format("DD MMM YYYY")}
             </Text>
           </View>
           <View>

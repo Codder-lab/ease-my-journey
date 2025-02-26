@@ -57,14 +57,14 @@ export default function SignIn() {
     <View
       style={{
         padding: 25,
-        paddingTop: 50,
+        paddingTop: 60,
         backgroundColor: Colors.WHITE,
         height: "100%",
       }}
     >
-      <TouchableOpacity onPress={() => router.back()}>
+      {/* <TouchableOpacity onPress={() => router.back()}>
         <Ionicons name="arrow-back" size={24} color="black" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <Text
         style={{
           fontFamily: "outfit-bold",
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderWidth: 1,
     borderRadius: 15,
-    borderColor: "#7d7d7d",
+    borderColor: Colors.PRIMARY,
     fontFamily: "outfit",
   },
   passwordContainer: {
@@ -217,7 +217,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderWidth: 1,
     borderRadius: 15,
-    borderColor: "#7d7d7d",
+    borderColor: Colors.PRIMARY,
     padding: 4,
   },
 });

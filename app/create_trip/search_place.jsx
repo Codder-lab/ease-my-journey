@@ -33,7 +33,7 @@ export default function SearchPlace() {
       }}
     >
       <GooglePlacesAutocomplete
-        placeholder="Search Place"
+        placeholder="Search Place..."
         fetchDetails={true}
         onFail={(error) => console.error(error)}
         onPress={(data, details = null) => {
@@ -62,6 +62,7 @@ export default function SearchPlace() {
             borderWidth: 1,
             borderRadius: 5,
             marginTop: 25,
+            borderColor: Colors.PRIMARY,
           },
         }}
       />

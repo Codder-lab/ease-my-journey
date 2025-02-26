@@ -59,7 +59,7 @@ export default function UserTripCard({ trip }) {
             color: "#7d7d7d",
           }}
         >
-          {moment(formatData(trip.tripData).startDate).format("DD MMM YYYY")}
+          {moment(formatData(trip.tripData).startDate).format("DD MMM YYYY")} - {moment(formatData(trip.tripData).endDate).format("DD MMM YYYY")}
         </Text>
       </View>
     </TouchableOpacity>

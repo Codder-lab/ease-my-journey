@@ -291,5 +291,5 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     alignSelf: "flex-end",
   },
-  loadMoreText: { color: "#fff", fontWeight: "bold", fontFamily: "outfit" },
+  loadMoreText: { color: "#fff", fontFamily: "outfit" },
 });
