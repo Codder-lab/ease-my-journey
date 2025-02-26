@@ -83,7 +83,7 @@ export default function DailyItinerary({ dailyItinerary = {} }) {
               </Text>
             </View>
           ))}
-          <View
+          {/* <View
             style={{
               display: "flex",
               flexDirection: "row",
@@ -99,7 +99,7 @@ export default function DailyItinerary({ dailyItinerary = {} }) {
             >
               <Ionicons name="navigate" size={24} color="white" />
             </TouchableOpacity>
-          </View>
+          </View> */}
         </View>
       ))}
     </View>

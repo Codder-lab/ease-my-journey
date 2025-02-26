@@ -21,6 +21,7 @@ export default function Login() {
           style={{
             fontSize: 28,
             fontFamily: "outfit-bold",
+            fontWeight: "bold",
             textAlign: "center",
             marginTop: 10,
             color: Colors.ICON_DARK,
