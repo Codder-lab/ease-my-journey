@@ -137,7 +137,7 @@ export default function SignUp() {
         <View style={styles.passwordContainer}>
           <TextInput
             secureTextEntry={!showPassword} // 👁️ Toggle visibility
-            style={[/*styles.input,*/ { flex: 1 }]}
+            style={[/*styles.input,*/ { flex: 1, fontFamily: "outfit", fontSize: 14 }]}
             placeholder="Enter Password"
             onChangeText={(value) => setPassword(value)}
           />
@@ -210,6 +210,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     borderColor: Colors.GRAY,
-    padding: 5,
+    paddingLeft: 15,
+    paddingVertical: 4,
   },
 });

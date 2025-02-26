@@ -132,14 +132,14 @@ export default function SignIn() {
         <View style={styles.passwordContainer}>
           <TextInput
             secureTextEntry={!showPassword} // 👁️ Toggle visibility
-            style={[/*styles.input,*/ { flex: 1 }]}
+            style={[/*styles.input,*/ { flex: 1, fontFamily: "outfit", fontSize: 14 }]}
             placeholder="Enter Password"
             onChangeText={(value) => setPassword(value)}
           />
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Ionicons
               name={showPassword ? "eye" : "eye-off"}
-              size={24}
+              size={20}
               color="#7d7d7d"
               style={{ marginRight: 10 }}
             />
@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     borderColor: Colors.PRIMARY,
-    padding: 4,
+    paddingLeft: 15,
+    paddingVertical: 4,
   },
 });
