@@ -7,10 +7,21 @@ export default function BudgetSummary({ budgetSummary }) {
     <View style={{
         marginTop: 20,
     }}>
-      <Text style={{
-            fontFamily: 'outfit-bold',
-            fontSize: 20,
-      }}>💵 Budget Summary</Text>
+        <View style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        }}>
+            <Text style={{
+                    fontFamily: 'outfit-bold',
+                    fontSize: 20,
+            }}>💵 Budget Summary</Text>
+            <Text style={{
+                fontFamily: 'outfit',
+                fontSize: 15,
+                marginTop: 5,
+            }}>(Approximate Cost.)</Text>
+        </View>
 
       {/* Accomodation Cost */}
         <View style={{

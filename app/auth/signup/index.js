@@ -82,7 +82,7 @@ export default function SignUp() {
       {/* User Full Name */}
       <View
         style={{
-          marginTop: 50,
+          marginTop: 40,
         }}
       >
         <Text
@@ -124,7 +124,7 @@ export default function SignUp() {
       </View>
 
       {/* Password */}
-      <View style={{ marginTop: 20 }}>
+      <View style={styles.inputContainer}>
         <Text
           style={{
             fontFamily: "outfit-bold",
@@ -137,14 +137,14 @@ export default function SignUp() {
         <View style={styles.passwordContainer}>
           <TextInput
             secureTextEntry={!showPassword} // 👁️ Toggle visibility
-            style={[/*styles.input,*/ { flex: 1, fontFamily: "outfit", fontSize: 14 }]}
+            style={[styles.input, { borderWidth: 0, flex: 1 }]}
             placeholder="Enter Password"
             onChangeText={(value) => setPassword(value)}
           />
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Ionicons
               name={showPassword ? "eye" : "eye-off"}
-              size={24}
+              size={20}
               color="#7d7d7d"
               style={{ marginRight: 10 }}
             />
@@ -159,7 +159,7 @@ export default function SignUp() {
           padding: 20,
           backgroundColor: Colors.PRIMARY,
           borderRadius: 15,
-          marginTop: 50,
+          marginTop: 70,
         }}
       >
         <Text
@@ -197,7 +197,12 @@ export default function SignUp() {
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    height: 50,
+    marginTop: 20,
+  },
   input: {
+    height: 50,
     padding: 15,
     borderWidth: 1,
     borderRadius: 15,
@@ -210,7 +215,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 15,
     borderColor: Colors.GRAY,
-    paddingLeft: 15,
-    paddingVertical: 4,
+    //paddingLeft: 2,
+    //paddingVertical: 4,
   },
 });

@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "outfit-bold",
     fontSize: 30,
-    marginBottom: 20,
+    marginBottom: 10,
     color: Colors.ICON_DARKER,
   },
   subtitle: {
