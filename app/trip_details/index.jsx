@@ -6,6 +6,7 @@ import moment from "moment";
 import FlightInfo from "../../components/TripDetails/FlightInfo";
 import HotelList from "../../components/TripDetails/HotelList";
 import DailyItinerary from "../../components/TripDetails/DailyItinerary";
+import BudgetSummary from "../../components/TripDetails/BudgetSummary";
 
 export default function TripDetails() {
   const navigation = useNavigation();
@@ -105,12 +106,16 @@ export default function TripDetails() {
           style={{
             fontFamily: "outfit",
             fontSize: 17,
+            marginTop: 5,
             color: "#7d7d7d",
           }}
         >
           {formatData(tripDetails.tripData)?.traveller?.icon}{" "}
           {formatData(tripDetails.tripData)?.traveller?.title}
         </Text>
+
+        {/* Budget Summary */}
+        <BudgetSummary budgetSummary={tripDetails?.tripPlan?.budgetSummary} />
 
         {/* Flight Information */}
         <FlightInfo flightData={tripDetails?.tripPlan?.flightDetails} />
