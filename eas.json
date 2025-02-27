@@ -20,5 +20,9 @@
   },
   "submit": {
     "production": {}
+  },
+  "updates": {
+    "url": "https://u.expo.dev/152d9a5c-3e7b-47bc-8b70-20227fb93daa",
+    "fallbackToCacheTimeout": 0
   }
 }
