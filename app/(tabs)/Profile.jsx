@@ -8,6 +8,7 @@ import {
   Modal,
   TextInput,
   ToastAndroid,
+  ActivityIndicator, // Import ActivityIndicator
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { router, useNavigation, useRouter } from "expo-router";
@@ -26,6 +27,7 @@ export default function Profile() {
   const [modalVisible, setModalVisible] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedEmail, setEditedEmail] = useState("");
+  const [loading, setLoading] = useState(false); // State for loading indicator
   const router = useRouter();
 
   useEffect(() => {
@@ -69,6 +71,8 @@ export default function Profile() {
       return;
     }
 
+    setLoading(true); // Start loading
+
     try {
       const currentUser = auth.currentUser;
 
@@ -99,6 +103,8 @@ export default function Profile() {
       }
     } catch (error) {
       Alert.alert("Update Error", error.message);
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -122,11 +128,7 @@ export default function Profile() {
 
       <TouchableOpacity
         style={styles.editBtn}
-        onPress={() => {
-          setEditedName(userData.fullName);
-          setEditedEmail(userData.email);
-          setModalVisible(true);
-        }}
+        onPress={openEditModal}
       >
         <Text style={styles.btnText}>Edit Profile</Text>
       </TouchableOpacity>
@@ -154,12 +156,18 @@ export default function Profile() {
             <TouchableOpacity
               style={styles.saveBtn}
               onPress={handleEditProfile}
+              disabled={loading} // Disable button while loading
             >
-              <Text style={styles.btnText}>Save</Text>
+              {loading ? (
+                <ActivityIndicator color={Colors.WHITE} /> // Show spinner if loading
+              ) : (
+                <Text style={styles.btnText}>Save</Text>
+              )}
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.cancelBtn}
               onPress={() => setModalVisible(false)}
+              disabled={loading} // Disable button while loading
             >
               <Text style={styles.logoutText}>Cancel</Text>
             </TouchableOpacity>
@@ -245,30 +253,17 @@ const styles = StyleSheet.create({
     borderColor: "#7d7d7d",
     marginBottom: 15,
   },
-  saveButtonText: {
-    textAlign: "center",
-    color: Colors.WHITE,
-    fontFamily: "outfit-bold",
-  },
   saveBtn: {
     backgroundColor: Colors.PRIMARY,
     padding: 15,
     borderRadius: 10,
     marginBottom: 10,
-  },
-  cancelButtonText: {
-    textAlign: "center",
-    color: Colors.WHITE,
-    fontFamily: "outfit-bold",
+    alignItems: "center",
   },
   cancelBtn: {
     backgroundColor: "#fa1232",
     padding: 15,
     borderRadius: 10,
-  },
-  editButtonText: {
-    textAlign: "center",
-    color: Colors.WHITE,
-    fontFamily: "outfit-bold",
+    alignItems: "center",
   },
 });
