@@ -103,70 +103,70 @@ export default function Discover() {
           id: 11,
           name: "Australia",
           image:
-            "https://www.australia.com/content/australia/en/places/sydney-and-surrounds/guide-to-sydney/_jcr_content/hero/image.adapt.1663.medium.jpg",
+            "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXVzdHJhbGlhfGVufDB8fDB8fHww",
           rating: 4.9,
         },
         {
           id: 12,
           name: "Canada",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/banff-national-park-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://www.avanse.com/blogs/images/28-mar-2023-blog.jpg",
           rating: 4.8,
         },
         {
           id: 13,
           name: "Brazil",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/christ-the-redeemer-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Cidade_Maravilhosa.jpg/800px-Cidade_Maravilhosa.jpg",
           rating: 4.6,
         },
         {
           id: 14,
           name: "South Africa",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/table-mountain-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://www.planetware.com/wpimages/2019/09/south-africa-in-pictures-most-beautiful-places-to-visit-cape-town.jpg",
           rating: 4.7,
         },
         {
           id: 15,
           name: "Egypt",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/pyramids-of-giza-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://t3.ftcdn.net/jpg/01/01/14/12/360_F_101141241_KuMSNHvZaXQL2yQFWbLQwxMwdUozduzo.jpg",
           rating: 4.5,
         },
         {
           id: 16,
           name: "Turkey",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/hagia-sophia-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://smileytrips.com/uploads/blog/1702363260_turle.jpeg",
           rating: 4.8,
         },
         {
           id: 17,
           name: "Mexico",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/chichen-itza-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://static.toiimg.com/photo/44971199.cms",
           rating: 4.6,
         },
         {
           id: 18,
           name: "Argentina",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/iguazu-falls-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://cdn.britannica.com/40/195440-050-B3859318/Congressional-Plaza-building-National-Congress-Buenos-Aires.jpg",
           rating: 4.7,
         },
         {
           id: 19,
           name: "Switzerland",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/matterhorn-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://www.routeperfect.com/blog/wp-content/uploads/2023/06/swiss_first_timer_top_5_cities_to_visit_in_switzerland.jpeg",
           rating: 4.9,
         },
         {
           id: 20,
           name: "Maldives",
           image:
-            "https://www.tripsavvy.com/thmb/3o2b2QZ4Z4Z4Z4Z4Z4Z4Z4Z4Z4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/maldives-5a8b4b1c1f4e130037a6b9a0.jpg",
+            "https://www.travelandleisure.com/thmb/N_r_xMvHfYjCHgZE-9bAWNiVAwU=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/TAL-conrad-maldives-rangali-island-MALDIVESHOTELS1024-6dfdeac00fec4f69893e7576b5896da9.jpg",
           rating: 4.8,
         },
     ];
