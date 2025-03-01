@@ -16,6 +16,7 @@ import { auth, db } from "../../configs/FirebaseConfig";
 import { signOut, updateProfile } from "firebase/auth";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { Colors } from "../../constants/Colors";
+import Constants from "expo-constants";
 
 export default function Profile() {
   const navigation = useNavigation();
@@ -115,29 +116,31 @@ export default function Profile() {
   };
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={{
-          uri: "https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg",
-        }}
-        style={styles.avatar}
-      />
+      <View style={styles.container}>
+        <Image
+          source={{
+            uri: "https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg",
+          }}
+          style={styles.avatar}
+        />
 
-      <Text style={styles.name}>{userData.fullName}</Text>
-      <Text style={styles.email}>{userData.email}</Text>
+        <Text style={styles.name}>{userData.fullName}</Text>
+        <Text style={styles.email}>{userData.email}</Text>
 
-      <TouchableOpacity
-        style={styles.editBtn}
-        onPress={openEditModal}
-      >
-        <Text style={styles.btnText}>Edit Profile</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style={styles.editBtn} onPress={openEditModal}>
+          <Text style={styles.btnText}>Edit Profile</Text>
+        </TouchableOpacity>
 
-      <TouchableOpacity onPress={handleLogout} style={styles.logoutBtn}>
-        <Text style={styles.logoutText}>Logout</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={handleLogout} style={styles.logoutBtn}>
+          <Text style={styles.logoutText}>Logout</Text>
+        </TouchableOpacity>
+        <View style={styles.versionContainer}>
+          <Text style={styles.versionText}>
+            App Version: {Constants.expoConfig.version}
+          </Text>
+        </View>
 
-      <Modal visible={modalVisible} transparent animationType="slide">
+        <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Profile</Text>
@@ -174,7 +177,7 @@ export default function Profile() {
           </View>
         </View>
       </Modal>
-    </View>
+      </View>
   );
 }
 
@@ -227,6 +230,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit-bold",
+  },
+  versionContainer: {
+    marginTop: 300,
+  },
+  versionText: {
+    fontSize: 14,
+    color: "#7d7d7d",
+    marginTop: 10,
   },
   modalContainer: {
     flex: 1,

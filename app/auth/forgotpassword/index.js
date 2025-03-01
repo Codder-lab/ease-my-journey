@@ -11,13 +11,14 @@ import { useRouter } from "expo-router";
 import { Colors } from "../../../constants/Colors";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../../configs/FirebaseConfig";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function ForgotPassword() {
   const router = useRouter();
   const [email, setEmail] = useState("");
 
   const handlePasswordReset = () => {
-    if (!email) {
+    if (!email.trim()) {
       ToastAndroid.show("Please enter your email", ToastAndroid.LONG);
       return;
     }
@@ -35,74 +36,94 @@ export default function ForgotPassword() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+        <Ionicons name="arrow-back" size={24} color={Colors.ICON_DARKER} />
+      </TouchableOpacity>
       <Text style={styles.title}>Forgot Password?</Text>
-      <Text style={styles.subtitle}>
-        Enter your email to reset your password
-      </Text>
+      <Text style={styles.subtitle}>Enter your email to reset your password</Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder="Enter your email"
-        onChangeText={(value) => setEmail(value)}
-        value={email}
-      />
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your email"
+          placeholderTextColor={Colors.ICON_DARK}
+          keyboardType="email-address"
+          autoCapitalize="none"
+          onChangeText={setEmail}
+          value={email}
+        />
+      </View>
 
-      <TouchableOpacity style={styles.button} onPress={handlePasswordReset}>
-        <Text style={styles.buttonText}>Send Reset Email</Text>
+      <TouchableOpacity style={styles.signInBtn} onPress={handlePasswordReset}>
+        <Text style={styles.signInText}>Send Reset Email</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        <Text style={styles.backText}>Back to Sign In</Text>
-      </TouchableOpacity>
+      {/* <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+        <Text style={styles.signUpText}>Remember your password? </Text>
+        <TouchableOpacity onPress={() => router.replace("auth/signin")}>
+          <Text style={{ color: Colors.PRIMARY }}>Sign In</Text>
+        </TouchableOpacity>
+      </View> */}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: 25,
-    paddingTop: 60,
+    flex: 1,
     backgroundColor: Colors.WHITE,
-    height: "100%",
-  },
-  title: {
-    fontFamily: "outfit-bold",
-    fontSize: 30,
-    marginBottom: 10,
-    color: Colors.ICON_DARKER,
-  },
-  subtitle: {
-    fontFamily: "outfit",
-    fontSize: 16,
-    color: Colors.ICON_DARK,
-    marginBottom: 30,
-  },
-  input: {
-    padding: 15,
-    borderWidth: 1,
-    borderRadius: 15,
-    borderColor: Colors.GRAY,
-    fontFamily: "outfit",
-    marginBottom: 20,
-  },
-  button: {
-    padding: 20,
-    backgroundColor: Colors.PRIMARY,
-    borderRadius: 15,
-  },
-  buttonText: {
-    color: Colors.WHITE,
-    textAlign: "center",
-  },
-  backText: {
-    color: Colors.PRIMARY,
-    textAlign: "center",
+    padding: 30,
+    justifyContent: "center",
   },
   backButton: {
-    padding: 20,
-    backgroundColor: Colors.WHITE,
-    borderRadius: 15,
-    marginTop: 20,
+    position: "absolute",
+    top: 50,
+    left: 20,
+    zIndex: 10,
+  },
+  title: {
+    fontSize: 32,
+    fontFamily: "outfit-bold",
+    textAlign: "center",
+    color: Colors.ICON_DARKER,
+    marginBottom: 10,
+  },
+  subtitle: {
+    fontSize: 16,
+    fontFamily: "outfit",
+    textAlign: "center",
+    color: Colors.ICON_DARK,
+    marginBottom: 40,
+  },
+  inputContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    borderRadius: 13,
+    padding: 10,
+    marginBottom: 20,
     borderWidth: 1,
+    borderColor: "#ddd",
+  },
+  input: {
+    flex: 1,
+    fontFamily: "outfit",
+    fontSize: 12,
+    color: Colors.ICON_DARKER,
+  },
+  signInBtn: {
+    backgroundColor: Colors.PRIMARY,
+    padding: 18,
+    borderRadius: 13,
+    alignItems: "center",
+  },
+  signInText: {
+    fontSize: 15,
+    fontFamily: "outfit-bold",
+    color: Colors.WHITE,
+  },
+  signUpText: {
+    fontFamily: "outfit",
+    color: Colors.ICON_DARK,
   },
 });

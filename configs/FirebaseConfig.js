@@ -32,3 +32,7 @@ export const auth = getAuth(app, {
 });
 
 export const db = getFirestore(app);
+
+// Use reCAPTCHA v2 instead of reCAPTCHA Enterprise
+auth.settings.appVerificationDisabledForTesting = false; // Set to true for testing in development
+auth.settings.forceRecaptchaFlow = true; // Force reCAPTCHA v2
