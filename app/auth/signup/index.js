@@ -20,6 +20,7 @@ import {
 import { auth, db } from "../../../configs/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+import LottieView from "lottie-react-native"; // Import Lottie
 
 // Suppress the specific warning
 LogBox.ignoreLogs([
@@ -37,6 +38,9 @@ export default function SignUp() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [timer, setTimer] = useState(0);
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false); // State for animation
   const recaptchaVerifier = useRef(null);
 
   useEffect(() => {
@@ -44,6 +48,22 @@ export default function SignUp() {
       headerShown: false,
     });
   }, []);
+
+  const startTimer = () => {
+    setTimer(60); // 60 seconds cooldown
+    setIsOtpSent(true);
+
+    const interval = setInterval(() => {
+      setTimer((prev) => {
+        if (prev === 1) {
+          clearInterval(interval);
+          setIsOtpSent(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const sendOTP = async () => {
     if (phoneNumber.length !== 10) {
@@ -59,9 +79,27 @@ export default function SignUp() {
       );
       setVerificationId(verificationId);
       ToastAndroid.show("OTP Sent!", ToastAndroid.LONG);
+      startTimer(); // Start cooldown timer
     } catch (error) {
       ToastAndroid.show("Failed to send OTP", ToastAndroid.LONG);
       console.error(error);
+    }
+  };
+
+  const verifyOTP = async () => {
+    if (!verificationId || !otp) {
+      ToastAndroid.show("Please enter OTP", ToastAndroid.LONG);
+      return;
+    }
+    try {
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
+      ToastAndroid.show("OTP Verified!", ToastAndroid.LONG);
+
+      // Show success animation
+      setShowSuccessAnimation(true);
+    } catch (error) {
+      ToastAndroid.show("Invalid OTP", ToastAndroid.LONG);
+      console.error("Error verifying OTP:", error);
     }
   };
 
@@ -144,10 +182,22 @@ export default function SignUp() {
           keyboardType="phone-pad"
           onChangeText={setPhoneNumber}
         />
-        <TouchableOpacity onPress={sendOTP}>
-          <Text style={{ color: Colors.PRIMARY }}>Send OTP</Text>
-        </TouchableOpacity>
+        {/* Show "Send OTP" button only if OTP is not sent */}
+        {!isOtpSent && (
+          <TouchableOpacity onPress={sendOTP}>
+            <Text style={{ color: Colors.PRIMARY }}>Send OTP</Text>
+          </TouchableOpacity>
+        )}
       </View>
+
+      {/* Show "Resend OTP" button only if OTP is sent */}
+      {isOtpSent && (
+        <TouchableOpacity onPress={sendOTP} disabled={timer > 0} style={styles.resendButton}>
+          <Text style={{ color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY, fontFamily: "outfit" }}>
+            {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
+          </Text>
+        </TouchableOpacity>
+      )}
 
       {verificationId && (
         <View style={styles.inputContainer}>
@@ -158,6 +208,19 @@ export default function SignUp() {
             keyboardType="numeric"
             onChangeText={setOtp}
           />
+          {/* Show Verify button or Success Animation */}
+          {!showSuccessAnimation ? (
+            <TouchableOpacity onPress={verifyOTP}>
+              <Text style={{ color: Colors.PRIMARY }}>Verify</Text>
+            </TouchableOpacity>
+          ) : (
+            <LottieView
+              source={require("../../../assets/images/success.json")} // Path to your animation file
+              autoPlay
+              loop={false}
+              style={{ width: 30, height: 30 }} // Adjust size as needed
+            />
+          )}
         </View>
       )}
 
@@ -228,6 +291,11 @@ const styles = StyleSheet.create({
     fontFamily: "outfit",
     fontSize: 12,
     color: Colors.ICON_DARKER,
+  },
+  resendButton: {
+    alignSelf: "flex-end",
+    marginTop: -15,
+    marginBottom: 10,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
