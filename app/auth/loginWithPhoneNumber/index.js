@@ -21,8 +21,27 @@ export default function LoginWithPhone() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
+  const [isOtpSent, setIsOtpSent] = useState(false); // State to track if OTP is sent
+  const [timer, setTimer] = useState(0); // State for the cooldown timer
   const router = useRouter();
-  const recaptchaVerifier = useRef(null); // ✅ UseRef for Recaptcha
+  const recaptchaVerifier = useRef(null); // UseRef for Recaptcha
+
+  // Function to start the cooldown timer
+  const startTimer = () => {
+    setTimer(60); // 60 seconds cooldown
+    setIsOtpSent(true);
+
+    const interval = setInterval(() => {
+      setTimer((prev) => {
+        if (prev === 1) {
+          clearInterval(interval);
+          setIsOtpSent(false);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+  };
 
   const sendOTP = async () => {
     if (phoneNumber.length < 10) {
@@ -34,12 +53,13 @@ export default function LoginWithPhone() {
       const phoneProvider = new PhoneAuthProvider(auth);
       const verificationId = await phoneProvider.verifyPhoneNumber(
         `+91${phoneNumber}`,
-        recaptchaVerifier.current // ✅ Pass the ref correctly
+        recaptchaVerifier.current // Pass the ref correctly
       );
 
       console.log("Verification ID:", verificationId);
       setVerificationId(verificationId);
       ToastAndroid.show("OTP Sent!", ToastAndroid.LONG);
+      startTimer(); // Start the cooldown timer
     } catch (error) {
       console.log("Send OTP Error:", error.message);
       ToastAndroid.show("Failed to send OTP", ToastAndroid.LONG);
@@ -55,7 +75,7 @@ export default function LoginWithPhone() {
       const credential = PhoneAuthProvider.credential(verificationId, otp);
       await signInWithCredential(auth, credential);
       ToastAndroid.show("Login Successful!", ToastAndroid.LONG);
-      router.replace("/Trips"); // ✅ Navigate to Trips Page
+      router.replace("/Trips"); // Navigate to Trips Page
     } catch (error) {
       ToastAndroid.show("Invalid OTP", ToastAndroid.LONG);
       console.log("Verify OTP Error:", error.message);
@@ -87,9 +107,25 @@ export default function LoginWithPhone() {
         />
       </View>
 
-      <TouchableOpacity style={styles.sendOtpBtn} onPress={sendOTP}>
-        <Text style={styles.btnText}>Send OTP</Text>
-      </TouchableOpacity>
+      {/* Show "Send OTP" button only if OTP is not sent */}
+      {!isOtpSent && (
+        <TouchableOpacity style={styles.sendOtpBtn} onPress={sendOTP}>
+          <Text style={styles.btnText}>Send OTP</Text>
+        </TouchableOpacity>
+      )}
+
+      {/* Show "Resend OTP" button only if OTP is sent */}
+      {isOtpSent && (
+        <TouchableOpacity
+          style={styles.resendButton}
+          onPress={sendOTP}
+          disabled={timer > 0}
+        >
+          <Text style={{ color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY, fontFamily: "outfit" }}>
+            {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
+          </Text>
+        </TouchableOpacity>
+      )}
 
       {verificationId && (
         <>
@@ -162,5 +198,10 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: Colors.WHITE,
     fontFamily: "outfit-bold",
+  },
+  resendButton: {
+    alignSelf: "flex-end",
+    marginTop: -10,
+    marginBottom: 10,
   },
 });
