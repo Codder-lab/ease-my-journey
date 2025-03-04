@@ -33,7 +33,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-firebase-core"
     ],
     "experiments": {
       "typedRoutes": true
