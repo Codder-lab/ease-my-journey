@@ -28,6 +28,6 @@ jobs:
         run: |
           EXPO_TOKEN=${{ secrets.EXPO_TOKEN }} eas update --branch production --message "Auto Update from GitHub Actions" --non-interactive
 
-      - name: Start Expo Build
-        run: |
-          EXPO_TOKEN=${{ secrets.EXPO_TOKEN }} eas build --platform android --profile production --non-interactive
+      # - name: Start Expo Build
+      #   run: |
+      #     EXPO_TOKEN=${{ secrets.EXPO_TOKEN }} eas build --platform android --profile production --non-interactive
