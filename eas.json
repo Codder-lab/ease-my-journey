@@ -13,7 +13,7 @@
     },
     "production": {
       "android": {
-        "releaseChannel": "default",
+        "releaseChannel": "production",
         "buildType": "apk",
         "autoIncrement": true
       }
