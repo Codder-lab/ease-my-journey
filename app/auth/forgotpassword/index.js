@@ -12,6 +12,7 @@ import { Colors } from "../../../constants/Colors";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../../configs/FirebaseConfig";
 import { Ionicons } from "@expo/vector-icons";
+import { width, height } from "../../../constants/Dimensions";
 
 export default function ForgotPassword() {
   const router = useRouter();
@@ -72,53 +73,53 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: 30,
+    padding: width * .1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: 50,
-    left: 20,
+    top: width * .1,
+    left: width * .05,
     zIndex: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: width * .09,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: 10,
+    marginBottom: width * .02,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * .04,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: 40,
+    marginBottom: width * .1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: 13,
-    padding: 10,
-    marginBottom: 20,
-    borderWidth: 1,
+    borderRadius: width * .05,
+    padding: width * .03,
+    marginBottom: width * .05,
+    borderWidth: width * .005,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: 12,
+    fontSize: width * .035,
     color: Colors.ICON_DARKER,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 18,
-    borderRadius: 13,
+    padding: width * .05,
+    borderRadius: width * .05,
     alignItems: "center",
   },
   signInText: {
-    fontSize: 15,
+    fontSize: width * .04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },

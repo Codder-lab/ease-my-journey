@@ -12,6 +12,7 @@ import { Colors } from "../../../constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from "../../../configs/FirebaseConfig";
+import { width, height } from "../../../constants/Dimensions";
 
 export default function SignIn() {
   const navigation = useNavigation();
@@ -20,6 +21,8 @@ export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+
+  // console.log(width, height);
 
   const OnSignIn = () => {
     if (!email.trim() || !password.trim()) {
@@ -31,6 +34,7 @@ export default function SignIn() {
         const user = userCredential.user;
         if (user.emailVerified) {
           router.replace("/Trips");
+          console.log("User Login successful: ", user.uid);
           console.log(user);
         } else {
           sendEmailVerification(user)
@@ -112,10 +116,10 @@ export default function SignIn() {
         <Text style={styles.phoneSignInText}>Login with Phone Number</Text>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: width * .05 }}>
         <Text style={styles.signUpText}>Don't have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signup")}>
-          <Text style={{ color: Colors.PRIMARY }}>Sign Up</Text>
+          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -126,66 +130,72 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: 30,
+    padding: width * .1,
     justifyContent: "center",
   },
   title: {
-    fontSize: 32,
+    fontSize: width * .1,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: 10,
+    marginBottom: width * .03,
+    //marginBottom: 10,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * .05,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: 40,
+    marginBottom: width * .1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: 13,
-    padding: 10,
-    marginBottom: 20,
+    borderRadius: width * .05,
+    padding: width * .03,
+    marginBottom: width * .05,
     borderWidth: 1,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: 12,
+    fontSize: width * .035,
     color: Colors.ICON_DARKER,
   },
   forgotText: {
+    fontSize: width * .035,
+    fontFamily: "outfit",
     textAlign: "right",
     color: Colors.ICON_DARKER,
-    marginBottom: 30,
+    marginBottom: width * .07,
+    marginTop: -10,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 18,
-    borderRadius: 13,
+    padding: width * .05,
+    borderRadius: width * .05,
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: width * .05,
   },
   signInText: {
-    fontSize: 15,
+    fontSize: width * .04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },
   phoneSignInBtn: {
-    backgroundColor: Colors.ICON_DARK,
-    padding: 18,
-    borderRadius: 13,
+    backgroundColor: Colors.WHITE,
+    padding: width * .05,
+    borderColor: Colors.ICON_DARKER,
+    borderWidth: width * .003,
+    borderRadius: width * .05,
     alignItems: "center",
   },
   phoneSignInText: {
-    fontSize: 15,
+    fontSize: width * .04,
     fontFamily: "outfit-bold",
-    color: Colors.WHITE,
+    color: Colors.ICON_DARKER,
   },
   signUpText: {
     fontFamily: "outfit",
