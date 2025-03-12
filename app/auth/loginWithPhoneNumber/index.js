@@ -16,6 +16,7 @@ import { auth } from "../../../configs/FirebaseConfig";
 import { Colors } from "../../../constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { width, height } from "../../../constants/Dimensions";
 
 export default function LoginWithPhone() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -153,56 +154,56 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: 30,
+    padding: width * .1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: 50,
-    left: 20,
+    top: width * .1,
+    left: width * .05,
     zIndex: 10,
   },
   title: {
-    fontSize: 28,
+    fontSize: width * .08,
     textAlign: "center",
-    marginBottom: 30,
+    marginBottom: width * .1,
     color: Colors.ICON_DARKER,
     fontFamily: "outfit-bold",
   },
   inputContainer: {
     backgroundColor: "#f5f5f5",
-    borderRadius: 13,
-    padding: 10,
-    marginBottom: 20,
-    borderWidth: 1,
+    borderRadius: width * .05,
+    padding: width * .03,
+    marginBottom: width * .06,
+    borderWidth: width * 0.005,
     borderColor: "#ddd",
   },
   input: {
-    fontSize: 14,
+    fontSize: width * .035,
     color: Colors.ICON_DARKER,
     fontFamily: "outfit",
   },
   sendOtpBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 18,
-    borderRadius: 13,
+    padding: width * .05,
+    borderRadius: width * .05,
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: width * .05,
   },
   verifyOtpBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 18,
-    borderRadius: 13,
+    padding: width * .05,
+    borderRadius: width * .05,
     alignItems: "center",
   },
   btnText: {
-    fontSize: 15,
+    fontSize: width * .04,
     color: Colors.WHITE,
     fontFamily: "outfit-bold",
   },
   resendButton: {
     alignSelf: "flex-end",
     marginTop: -10,
-    marginBottom: 10,
+    marginBottom: width * .05,
   },
 });

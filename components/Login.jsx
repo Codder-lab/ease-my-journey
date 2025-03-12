@@ -3,6 +3,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
+import { width, height } from "../constants/Dimensions";
 
 export default function Login() {
   const router = useRouter();
@@ -12,31 +13,18 @@ export default function Login() {
       <Image
         source={require("../assets/images/login.jpg")}
         style={{
-          width: "100%",
-          height: 400,
+          width: width * 1,
+          height: height * 0.5,
         }}
       />
       <View style={styles.container}>
         <Text
-          style={{
-            fontSize: 28,
-            fontFamily: "outfit-bold",
-            fontWeight: "bold",
-            textAlign: "center",
-            marginTop: 10,
-            color: Colors.ICON_DARK,
-          }}
+          style={styles.title}
         >
           EaseMyJourney
         </Text>
         <Text
-          style={{
-            fontFamily: "outfit",
-            fontSize: 17,
-            textAlign: "center",
-            color: "#7d7d7d",
-            marginTop: 20,
-          }}
+          style={styles.subtitle}
         >
           Discover your next adventure effortlessly. Personalized itineraries at
           your fingertips. Travel smarter with AI-driven insights.
@@ -47,12 +35,7 @@ export default function Login() {
           onPress={() => router.push("auth/signin")}
         >
           <Text
-            style={{
-              color: Colors.WHITE,
-              textAlign: "center",
-              fontFamily: "outfit",
-              fontSize: 17,
-            }}
+            style={styles.btnText}
           >
             Get Started
           </Text>
@@ -66,15 +49,36 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: Colors.WHITE,
     marginTop: -20,
-    height: "100%",
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    padding: 25,
+    height: height * 1.5,
+    borderTopLeftRadius: width * .065,
+    borderTopRightRadius: width * .065,
+    padding: width * .08,
+  },
+  title: {
+    fontSize: width * .08,
+    fontFamily: "outfit-bold",
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: width * .05,
+    color: Colors.ICON_DARK,
+  },
+  subtitle: {
+    fontFamily: "outfit",
+    fontSize: width * .05,
+    textAlign: "center",
+    color: "#7d7d7d",
+    marginTop: width * .05,
   },
   button: {
-    padding: 15,
+    padding: width * .04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: 99,
-    marginTop: "15%",
+    borderRadius: width * .1,
+    marginTop: width * .1,
   },
+  btnText: {
+    color: Colors.WHITE,
+    textAlign: "center",
+    fontFamily: "outfit",
+    fontSize: 17,
+  }
 });

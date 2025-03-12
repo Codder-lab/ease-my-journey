@@ -21,6 +21,7 @@ import { auth, db } from "../../../configs/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import LottieView from "lottie-react-native"; // Import Lottie
+import { width, height } from "../../../constants/Dimensions";
 
 // Suppress the specific warning
 LogBox.ignoreLogs([
@@ -189,7 +190,7 @@ export default function SignUp() {
         {/* Show "Send OTP" button only if OTP is not sent */}
         {!isOtpSent && (
           <TouchableOpacity onPress={sendOTP}>
-            <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Send OTP</Text>
+            <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit", fontSize: width * .035 }}>Send OTP</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -249,7 +250,7 @@ export default function SignUp() {
         <Text style={styles.signInText}>Create Account</Text>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
+      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: width * .05 }}>
         <Text style={styles.signUpText}>Already have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signin")}>
           <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign In</Text>
@@ -263,58 +264,58 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: 30,
+    padding: width * .1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: 50,
-    left: 20,
+    top: width * .1,
+    left: width * .05,
     zIndex: 10,
   },
   title: {
-    fontSize: 32,
+    fontSize: width * .1,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: 10,
+    marginBottom: width * .03,
   },
   subtitle: {
-    fontSize: 16,
+    fontSize: width * .04,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: 40,
+    marginBottom: width * .1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: 13,
-    padding: 10,
-    marginBottom: 20,
-    borderWidth: 1,
+    borderRadius: width * .05,
+    padding: width * .03,
+    marginBottom: width * .05,
+    borderWidth: width * .003,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: 12,
+    fontSize: width * .035,
     color: Colors.ICON_DARKER,
   },
   resendButton: {
     alignSelf: "flex-end",
     marginTop: -15,
-    marginBottom: 10,
+    marginBottom: width * .05,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 18,
-    borderRadius: 13,
+    padding: width * .05,
+    borderRadius: width * .05,
     alignItems: "center",
   },
   signInText: {
-    fontSize: 15,
+    fontSize: width * .04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },
