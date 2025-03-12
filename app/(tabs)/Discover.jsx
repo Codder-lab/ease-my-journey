@@ -393,7 +393,7 @@ const styles = StyleSheet.create({
   container: { flex: 1, padding: 20, backgroundColor: "#fff" },
   title: {
     fontSize: 30,
-    fontWeight: "bold",
+    //fontWeight: "bold",
     marginBottom: 15,
     marginTop: 15,
     fontFamily: "outfit-bold",
@@ -419,8 +419,8 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  name: { fontSize: 16, fontWeight: "700", marginTop: 5, fontFamily: "outfit" },
-  rating: { color: Colors.PRIMARY },
+  name: { fontSize: 16, fontWeight: "600", marginTop: 2, marginBottom: 2, fontFamily: "outfit" },
+  rating: { color: Colors.PRIMARY, marginTop: 2, marginBottom: 2, fontFamily: "outfit" },
   cardFooter: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -439,7 +439,7 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
   },
-  price: { fontSize: 14, color: "#00A86B", marginTop: 5 },
+  price: { fontSize: 14, color: "#00A86B", marginTop: 5, fontFamily: "outfit" },
   loadMoreBtn: {
     backgroundColor: Colors.PRIMARY,
     padding: 10,

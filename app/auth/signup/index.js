@@ -136,7 +136,7 @@ export default function SignUp() {
 
       // Navigate to the home screen
       router.replace("/Trips");
-      console.log("User Created:", user);
+      console.log("User Created Successfully:", user);
     } catch (error) {
       ToastAndroid.show(error.message, ToastAndroid.LONG);
       console.error("Error:", error);
@@ -145,6 +145,10 @@ export default function SignUp() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() => router.push("auth/signin")} style={styles.backButton}>
+        <Ionicons name="arrow-back" size={24} color={Colors.ICON_DARKER} />
+      </TouchableOpacity>
+
       <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={auth.app.options}
@@ -185,7 +189,7 @@ export default function SignUp() {
         {/* Show "Send OTP" button only if OTP is not sent */}
         {!isOtpSent && (
           <TouchableOpacity onPress={sendOTP}>
-            <Text style={{ color: Colors.PRIMARY }}>Send OTP</Text>
+            <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Send OTP</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -211,7 +215,7 @@ export default function SignUp() {
           {/* Show Verify button or Success Animation */}
           {!showSuccessAnimation ? (
             <TouchableOpacity onPress={verifyOTP}>
-              <Text style={{ color: Colors.PRIMARY }}>Verify</Text>
+              <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Verify</Text>
             </TouchableOpacity>
           ) : (
             <LottieView
@@ -248,7 +252,7 @@ export default function SignUp() {
       <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
         <Text style={styles.signUpText}>Already have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signin")}>
-          <Text style={{ color: Colors.PRIMARY }}>Sign In</Text>
+          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -261,6 +265,12 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     padding: 30,
     justifyContent: "center",
+  },
+  backButton: {
+    position: "absolute",
+    top: 50,
+    left: 20,
+    zIndex: 10,
   },
   title: {
     fontSize: 32,

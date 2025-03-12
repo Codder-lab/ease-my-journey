@@ -20,7 +20,7 @@ export default function BudgetSummary({ budgetSummary }) {
                 fontFamily: 'outfit',
                 fontSize: 15,
                 marginTop: 5,
-            }}>(Approximate Cost.)</Text>
+            }}>(Approximate Cost)</Text>
         </View>
 
       {/* Accomodation Cost */}

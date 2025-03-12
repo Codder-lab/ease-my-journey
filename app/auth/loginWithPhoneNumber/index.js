@@ -74,6 +74,7 @@ export default function LoginWithPhone() {
     try {
       const credential = PhoneAuthProvider.credential(verificationId, otp);
       await signInWithCredential(auth, credential);
+      console.log("User Login successful!!");
       ToastAndroid.show("Login Successful!", ToastAndroid.LONG);
       router.replace("/Trips"); // Navigate to Trips Page
     } catch (error) {

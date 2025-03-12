@@ -35,7 +35,7 @@ export default function Trips() {
 
     querySnapshot.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots.
-      console.log(doc.id, " => ", doc.data());
+      //console.log(doc.id, " => ", doc.data());
       setUserTrips((prev) => [...prev, doc.data()]);
     });
     setLoading(false);

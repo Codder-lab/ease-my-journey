@@ -31,6 +31,7 @@ export default function SignIn() {
         const user = userCredential.user;
         if (user.emailVerified) {
           router.replace("/Trips");
+          console.log("User Login successful: ", user.uid);
           console.log(user);
         } else {
           sendEmailVerification(user)
@@ -115,7 +116,7 @@ export default function SignIn() {
       <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
         <Text style={styles.signUpText}>Don't have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signup")}>
-          <Text style={{ color: Colors.PRIMARY }}>Sign Up</Text>
+          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -160,9 +161,12 @@ const styles = StyleSheet.create({
     color: Colors.ICON_DARKER,
   },
   forgotText: {
+    fontSize: 13,
+    fontFamily: "outfit",
     textAlign: "right",
     color: Colors.ICON_DARKER,
     marginBottom: 30,
+    marginTop: -15,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
@@ -177,15 +181,17 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
   },
   phoneSignInBtn: {
-    backgroundColor: Colors.ICON_DARK,
+    backgroundColor: Colors.WHITE,
     padding: 18,
+    borderColor: Colors.ICON_DARKER,
+    borderWidth: 1,
     borderRadius: 13,
     alignItems: "center",
   },
   phoneSignInText: {
     fontSize: 15,
     fontFamily: "outfit-bold",
-    color: Colors.WHITE,
+    color: Colors.ICON_DARKER,
   },
   signUpText: {
     fontFamily: "outfit",
