@@ -34,7 +34,7 @@ export default function SignIn() {
         const user = userCredential.user;
         if (user.emailVerified) {
           router.replace("/Trips");
-          console.log("User Login successful: ", user.uid);
+          console.log("User Login Successful: ", user.uid);
           console.log(user);
         } else {
           sendEmailVerification(user)
