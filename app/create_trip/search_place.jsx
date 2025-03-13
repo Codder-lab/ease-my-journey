@@ -5,6 +5,8 @@ import { Colors } from "../../constants/Colors";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import "react-native-get-random-values";
 import { CreateTripContext } from "../../context/create_trip_context";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function SearchPlace() {
   const navigation = useNavigation();
@@ -25,12 +27,7 @@ export default function SearchPlace() {
 
   return (
     <View
-      style={{
-        padding: 25,
-        paddingTop: 75,
-        backgroundColor: Colors.WHITE,
-        height: "100%",
-      }}
+      style={styles.container}
     >
       <GooglePlacesAutocomplete
         placeholder="Search Place..."
@@ -60,8 +57,8 @@ export default function SearchPlace() {
         styles={{
           textInputContainer: {
             borderWidth: 1,
-            borderRadius: 5,
-            marginTop: 25,
+            borderRadius: width * .01,
+            marginTop: width * .1,
             borderColor: Colors.PRIMARY,
           },
         }}
@@ -69,3 +66,12 @@ export default function SearchPlace() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: width * .08,
+    paddingTop: width * .12,
+    backgroundColor: Colors.WHITE,
+    height: height * 1.5,
+  }
+})

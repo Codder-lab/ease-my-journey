@@ -11,6 +11,8 @@ import { Colors } from "../../constants/Colors";
 import { SelectBudgetOptions } from "../../constants/Options";
 import OptionCard from "../../components/CreateTrip/OptionCard";
 import { CreateTripContext } from "../../context/create_trip_context";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function SelectBudget() {
   const navigation = useNavigation();
@@ -45,35 +47,21 @@ export default function SelectBudget() {
 
   return (
     <View
-      style={{
-        paddingTop: 75,
-        padding: 25,
-        backgroundColor: Colors.WHITE,
-        height: "100%",
-      }}
+      style={styles.container}
     >
       <Text
-        style={{
-          fontFamily: "outfit-bold",
-          fontSize: 35,
-          marginTop: 20,
-          color: Colors.ICON_DARKER,
-        }}
+        style={styles.title}
       >
         Budget
       </Text>
 
       <View
         style={{
-          marginTop: 20,
+          marginTop: width * .03,
         }}
       >
         <Text
-          style={{
-            fontFamily: "outfit-bold",
-            fontSize: 20,
-            color: Colors.ICON_DARK,
-          }}
+          style={ styles.subtitle }
         >
           Choose spending habit for your trip
         </Text>
@@ -94,21 +82,11 @@ export default function SelectBudget() {
       </View>
 
       <TouchableOpacity
-        style={{
-          padding: 15,
-          backgroundColor: Colors.PRIMARY,
-          borderRadius: 15,
-          marginTop: 20,
-        }}
+        style={styles.btn}
         onPress={() => onClickContinue()}
       >
         <Text
-          style={{
-            textAlign: "center",
-            color: Colors.WHITE,
-            fontFamily: "outfit-medium",
-            fontSize: 20,
-          }}
+          style={styles.btnText}
         >
           Continue
         </Text>
@@ -116,3 +94,36 @@ export default function SelectBudget() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: width * .2,
+    padding: width * .08,
+    backgroundColor: Colors.WHITE,
+    height: height * 1.5,
+  },
+  title: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .09,
+    marginTop: width * .05,
+    color: Colors.ICON_DARKER,
+  },
+  subtitle: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .05,
+    color: Colors.ICON_DARK,
+    marginBottom: width * .03,
+  },
+  btn: {
+    padding: width * .04,
+    backgroundColor: Colors.PRIMARY,
+    borderRadius: width * .04,
+    marginTop: width * .05
+  },
+  btnText: {
+    textAlign: "center",
+    color: Colors.WHITE,
+    fontFamily: "outfit-medium",
+    fontSize: width * .05,
+  }
+});

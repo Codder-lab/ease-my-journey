@@ -11,6 +11,8 @@ import { Colors } from "../../constants/Colors";
 import { SelectTravellerList } from "../../constants/Options";
 import OptionCard from "../../components/CreateTrip/OptionCard";
 import { CreateTripContext } from "../../context/create_trip_context";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function SelectTraveller() {
   const navigation = useNavigation();
@@ -36,35 +38,21 @@ export default function SelectTraveller() {
   return (
     <ScrollView>
       <View
-        style={{
-          padding: 25,
-          paddingTop: 75,
-          backgroundColor: Colors.WHITE,
-          height: "100%",
-        }}
+        style={styles.container}
       >
         <Text
-          style={{
-            fontSize: 35,
-            fontFamily: "outfit-bold",
-            marginTop: 20,
-            color: Colors.ICON_DARKER,
-          }}
+          style={styles.title}
         >
           Who's Travelling?
         </Text>
 
         <View
           style={{
-            marginTop: 20,
+            marginTop: width * .05,
           }}
         >
           <Text
-            style={{
-              fontFamily: "outfit-bold",
-              fontSize: 23,
-              color: Colors.ICON_DARK,
-            }}
+            style={styles.subtitle}
           >
             Choose your travellers
           </Text>
@@ -86,12 +74,7 @@ export default function SelectTraveller() {
         </View>
 
         <TouchableOpacity
-          style={{
-            padding: 15,
-            backgroundColor: Colors.PRIMARY,
-            borderRadius: 15,
-            marginTop: 20,
-          }}
+          style={styles.btn}
         >
           <Link
             href={"/create_trip/select_dates"}
@@ -101,12 +84,7 @@ export default function SelectTraveller() {
             }}
           >
             <Text
-              style={{
-                textAlign: "center",
-                color: Colors.WHITE,
-                fontFamily: "outfit-medium",
-                fontSize: 20,
-              }}
+              style={styles.btnText}
             >
               Continue
             </Text>
@@ -116,3 +94,35 @@ export default function SelectTraveller() {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: width * .06,
+    paddingTop: width * .16,
+    backgroundColor: Colors.WHITE,
+    height: height * 1,
+  },
+  title: {
+    fontSize: width * .09,
+    fontFamily: "outfit-bold",
+    marginTop: width * .05,
+    color: Colors.ICON_DARKER,
+  },
+  subtitle: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .06,
+    color: Colors.ICON_DARK,
+  },
+  btn: {
+    padding: width * .04,
+    backgroundColor: Colors.PRIMARY,
+    borderRadius: width * .03,
+    marginTop: width * .06,
+  },
+  btnText: {
+    textAlign: "center",
+    color: Colors.WHITE,
+    fontFamily: "outfit-medium",
+    fontSize: width * .05,
+  }
+});

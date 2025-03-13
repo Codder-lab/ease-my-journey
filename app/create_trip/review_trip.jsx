@@ -4,6 +4,8 @@ import { useNavigation, useRouter } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { CreateTripContext } from "../../context/create_trip_context";
 import moment from "moment";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function ReviewTrip() {
   const navigation = useNavigation();
@@ -20,50 +22,31 @@ export default function ReviewTrip() {
 
   return (
     <View
-      style={{
-        padding: 25,
-        paddingTop: 75,
-        backgroundColor: Colors.WHITE,
-        height: "100%",
-      }}
+      style={styles.container}
     >
       <Text
-        style={{
-          fontFamily: "outfit-bold",
-          fontSize: 35,
-          marginTop: 20,
-          color: Colors.ICON_DARKER,
-        }}
+        style={styles.title}
       >
         Review your trip
       </Text>
       <View
         style={{
-          marginTop: 20,
+          marginTop: width * .05,
         }}
       >
         <Text
-          style={{
-            fontFamily: "outfit-bold",
-            fontSize: 20,
-            color: Colors.ICON_DARK,
-          }}
+          style={styles.subtitle}
         >
           Before generating your trip, please review your selection
         </Text>
 
         {/* Destination Info */}
         <View
-          style={{
-            marginTop: 30,
-            display: "flex",
-            flexDirection: "row",
-            gap: 20,
-          }}
+          style={styles.desContainer}
         >
           <Text
             style={{
-              fontSize: 30,
+              fontSize: width * .07,
             }}
           >
             📍
@@ -74,20 +57,12 @@ export default function ReviewTrip() {
             }}
           >
             <Text
-              style={{
-                fontFamily: "outfit-medium",
-                fontSize: 20,
-                color: "#7d7d7d",
-              }}
+              style={styles.infoTitle}
             >
               Destination
             </Text>
             <Text
-              style={{
-                fontFamily: "outfit",
-                fontSize: 20,
-                flexWrap: "wrap",
-              }}
+              style={styles.infoSubtitle}
             >
               {tripData?.locationInfo?.name}
             </Text>
@@ -96,16 +71,11 @@ export default function ReviewTrip() {
 
         {/* Selected Date Info */}
         <View
-          style={{
-            marginTop: 20,
-            display: "flex",
-            flexDirection: "row",
-            gap: 20,
-          }}
+          style={styles.desContainer}
         >
           <Text
             style={{
-              fontSize: 30,
+              fontSize: width * .07,
             }}
           >
             📅
@@ -116,20 +86,12 @@ export default function ReviewTrip() {
             }}
           >
             <Text
-              style={{
-                fontFamily: "outfit-medium",
-                fontSize: 20,
-                color: "#7d7d7d",
-              }}
+              style={styles.infoTitle}
             >
               Travel Date
             </Text>
             <Text
-              style={{
-                fontFamily: "outfit",
-                fontSize: 20,
-                flexWrap: "wrap",
-              }}
+              style={styles.infoSubtitle}
             >
               {moment(tripData?.startDate).format("MMM DD, YYYY") +
                 "  to " +
@@ -142,16 +104,11 @@ export default function ReviewTrip() {
 
         {/* Traveller Info */}
         <View
-          style={{
-            marginTop: 20,
-            display: "flex",
-            flexDirection: "row",
-            gap: 20,
-          }}
+          style={styles.desContainer}
         >
           <Text
             style={{
-              fontSize: 30,
+              fontSize: width * .07,
             }}
           >
             🚌
@@ -162,20 +119,12 @@ export default function ReviewTrip() {
             }}
           >
             <Text
-              style={{
-                fontFamily: "outfit-medium",
-                fontSize: 20,
-                color: "#7d7d7d",
-              }}
+              style={styles.infoTitle}
             >
               Who is Travelling?
             </Text>
             <Text
-              style={{
-                fontFamily: "outfit",
-                fontSize: 20,
-                flexWrap: "wrap",
-              }}
+              style={styles.infoSubtitle}
             >
               {tripData?.traveller?.title}
             </Text>
@@ -184,16 +133,11 @@ export default function ReviewTrip() {
 
         {/* Budget Info */}
         <View
-          style={{
-            marginTop: 20,
-            display: "flex",
-            flexDirection: "row",
-            gap: 20,
-          }}
+          style={styles.desContainer}
         >
           <Text
             style={{
-              fontSize: 30,
+              fontSize: width * .07,
             }}
           >
             💰
@@ -204,20 +148,12 @@ export default function ReviewTrip() {
             }}
           >
             <Text
-              style={{
-                fontFamily: "outfit-medium",
-                fontSize: 20,
-                color: "#7d7d7d",
-              }}
+              style={styles.infoTitle}
             >
               Budget
             </Text>
             <Text
-              style={{
-                fontFamily: "outfit",
-                fontSize: 20,
-                flexWrap: "wrap",
-              }}
+              style={styles.infoSubtitle}
             >
               {tripData?.budget}
             </Text>
@@ -226,21 +162,11 @@ export default function ReviewTrip() {
       </View>
 
       <TouchableOpacity
-        style={{
-          padding: 15,
-          backgroundColor: Colors.PRIMARY,
-          borderRadius: 15,
-          marginTop: 50,
-        }}
+        style={styles.btn}
         onPress={() => router.replace("/create_trip/generate_trip")}
       >
         <Text
-          style={{
-            textAlign: "center",
-            color: Colors.WHITE,
-            fontFamily: "outfit-medium",
-            fontSize: 20,
-          }}
+          style={styles.btnText}
         >
           Build my trip
         </Text>
@@ -248,3 +174,51 @@ export default function ReviewTrip() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: width * .05,
+    paddingTop: width * .1,
+    backgroundColor: Colors.WHITE,
+    height: height * 1.5,
+  },
+  title: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .08,
+    marginTop: width * .05,
+    color: Colors.ICON_DARKER,
+  },
+  subtitle: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .05,
+    color: Colors.ICON_DARK,
+  },
+  desContainer: {
+    marginTop: width * .05,
+    display: "flex",
+    flexDirection: "row",
+    gap: width * .05,
+  },
+  infoTitle: {
+    fontFamily: "outfit-medium",
+    fontSize: width * .05,
+    color: "#7d7d7d",
+  },
+  infoSubtitle: {
+    fontFamily: "outfit",
+    fontSize: width * .05,
+    flexWrap: "wrap",
+  },
+  btn: {
+    padding: width * .04,
+    backgroundColor: Colors.PRIMARY,
+    borderRadius: width * .04,
+    marginTop: width * .1,
+  },
+  btnText: {
+    textAlign: "center",
+    color: Colors.WHITE,
+    fontFamily: "outfit-medium",
+    fontSize: width * .05,
+  }
+});
