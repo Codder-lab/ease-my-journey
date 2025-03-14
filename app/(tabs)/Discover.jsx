@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { Colors } from "../../constants/Colors";
+import { width, height } from "../../constants/Dimensions";
 
 export default function Discover() {
   const [destinations, setDestinations] = useState([]);
@@ -390,28 +391,28 @@ export default function Discover() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#fff" },
+  container: { flex: 1, padding: width * .06, backgroundColor: "#fff" },
   title: {
-    fontSize: 30,
+    fontSize: width * .08,
     //fontWeight: "bold",
-    marginBottom: 15,
-    marginTop: 15,
+    marginBottom: width * .05,
+    marginTop: width * .05,
     fontFamily: "outfit-bold",
     color: Colors.ICON_DARKER,
   },
   searchBar: {
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 10,
-    marginBottom: 25,
+    borderRadius: width * .02,
+    padding: width * .03,
+    marginBottom: width * .08,
   },
   card: {
-    marginRight: 15,
+    marginRight: width * .05,
     width: 180,
     backgroundColor: "#f9f9f9",
-    borderRadius: 10,
-    marginBottom: 15,
+    borderRadius: width * .02,
+    marginBottom: width * .02,
   },
   image: {
     width: 180,
@@ -419,33 +420,33 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  name: { fontSize: 16, fontWeight: "600", marginTop: 2, marginBottom: 2, fontFamily: "outfit" },
-  rating: { color: Colors.PRIMARY, marginTop: 2, marginBottom: 2, fontFamily: "outfit" },
+  name: { fontSize: width * .04, fontWeight: "600", marginTop: width * .01, marginBottom: width * .01, fontFamily: "outfit" },
+  rating: { color: Colors.PRIMARY, marginTop: width * .01, marginBottom: width * .01, fontFamily: "outfit" },
   cardFooter: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 5,
+    paddingHorizontal: width * .01,
   },
   trendingCard: {
-    marginBottom: 15,
-    width: "100%",
+    marginBottom: width * .05,
+    width: width * .88,
     backgroundColor: "#f9f9f9",
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: width * .02,
+    padding: width * .02,
   },
   trendingImage: {
-    width: "100%",
-    height: 200,
+    width: width * .84,
+    height: height * .2,
     borderRadius: 10,
   },
-  price: { fontSize: 14, color: "#00A86B", marginTop: 5, fontFamily: "outfit" },
+  price: { fontSize: width * .04, color: "#00A86B", marginTop: width * .01, fontFamily: "outfit" },
   loadMoreBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 10,
-    borderRadius: 10,
+    padding: width * .03,
+    borderRadius: width * .02,
     alignItems: "center",
-    marginVertical: 10,
+    marginVertical: width * .01,
     alignSelf: "flex-end",
   },
   loadMoreText: { color: "#fff", fontFamily: "outfit" },

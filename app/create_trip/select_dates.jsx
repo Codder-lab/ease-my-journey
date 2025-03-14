@@ -5,6 +5,8 @@ import { Colors } from "../../constants/Colors";
 import CalendarPicker from "react-native-calendar-picker";
 import moment from "moment";
 import { CreateTripContext } from "../../context/create_trip_context";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function SelectDate() {
   const navigation = useNavigation();
@@ -50,20 +52,10 @@ export default function SelectDate() {
 
   return (
     <View
-      style={{
-        padding: 25,
-        paddingTop: 75,
-        backgroundColor: Colors.WHITE,
-        height: "100%",
-      }}
+      style={styles.container}
     >
       <Text
-        style={{
-          fontFamily: "outfit-bold",
-          fontSize: 35,
-          marginTop: 20,
-          color: Colors.ICON_DARKER,
-        }}
+        style={styles.title}
       >
         Travel Dates
       </Text>
@@ -87,20 +79,10 @@ export default function SelectDate() {
       </View>
       <TouchableOpacity
         onPress={OnDateSelection}
-        style={{
-          padding: 15,
-          backgroundColor: Colors.PRIMARY,
-          borderRadius: 15,
-          marginTop: 35,
-        }}
+        style={styles.btn}
       >
         <Text
-          style={{
-            textAlign: "center",
-            color: Colors.WHITE,
-            fontFamily: "outfit-medium",
-            fontSize: 20,
-          }}
+          style={styles.btnText}
         >
           Continue
         </Text>
@@ -108,3 +90,30 @@ export default function SelectDate() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: width * .06,
+    paddingTop: width * .18,
+    backgroundColor: Colors.WHITE,
+    height: height * 1.5,
+  },
+  title: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .09,
+    marginTop: width * .05,
+    color: Colors.ICON_DARKER,
+  },
+  btn: {
+    padding: width * .04,
+    backgroundColor: Colors.PRIMARY,
+    borderRadius: width * .04,
+    marginTop: width * .08,
+  },
+  btnText: {
+    textAlign: "center",
+    color: Colors.WHITE,
+    fontFamily: "outfit-medium",
+    fontSize: width * .04,
+  }
+});

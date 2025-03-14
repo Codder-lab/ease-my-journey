@@ -8,6 +8,8 @@ import { chatSession } from "../../configs/AiModel";
 import { useRouter } from "expo-router";
 import { auth, db } from "../../configs/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
+import { StyleSheet } from "react-native";
+import { width, height } from "../../constants/Dimensions";
 
 export default function GenerateTrip() {
   const { tripData, setTripData } = useContext(CreateTripContext);
@@ -53,29 +55,15 @@ export default function GenerateTrip() {
 
   return (
     <View
-      style={{
-        padding: 25,
-        padddingTop: 75,
-        backgroundColor: Colors.WHITE,
-        height: "100%",
-      }}
+      style={styles.container}
     >
       <Text
-        style={{
-          fontFamily: "outfit-bold",
-          fontSize: 35,
-          textAlign: "center",
-        }}
+        style={styles.title}
       >
         Please Wait...
       </Text>
       <Text
-        style={{
-          fontFamily: "outfit-medium",
-          fontSize: 20,
-          textAlign: "center",
-          marginTop: 40,
-        }}
+        style={styles.subtitle}
       >
         We are working to generate your dream trip.
       </Text>
@@ -86,15 +74,36 @@ export default function GenerateTrip() {
       />
 
       <Text
-        style={{
-          fontFamily: "outfit",
-          color: "#7d7d7d",
-          fontSize: 20,
-          textAlign: "center",
-        }}
+        style={styles.backText}
       >
         Do not Go Back
       </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: width * .05,
+    paddingTop: width * .1,
+    backgroundColor: Colors.WHITE,
+    height: height * 1.5,
+  },
+  title: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .1,
+    textAlign: "center",
+  },
+  subtitle: {
+    fontFamily: "outfit-medium",
+    fontSize: width * .05,
+    textAlign: "center",
+    marginTop: width * .05,
+  },
+  backText: {
+    fontFamily: "outfit",
+    color: "#7d7d7d",
+    fontSize: width * .05,
+    textAlign: "center",
+  }
+});
