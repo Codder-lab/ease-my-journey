@@ -48,7 +48,7 @@ export default function SelectTraveller() {
 
         <View
           style={{
-            marginTop: width * .05,
+            marginTop: width * .04,
           }}
         >
           <Text
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     padding: width * .06,
     paddingTop: width * .16,
     backgroundColor: Colors.WHITE,
-    height: height * 1,
+    height: height * 1.05,
   },
   title: {
     fontSize: width * .09,

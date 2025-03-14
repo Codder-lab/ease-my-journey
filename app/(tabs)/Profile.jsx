@@ -17,6 +17,7 @@ import { signOut, updateProfile } from "firebase/auth";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { Colors } from "../../constants/Colors";
 import Constants from "expo-constants";
+import { width, height } from "../../constants/Dimensions";
 
 export default function Profile() {
   const navigation = useNavigation();
@@ -185,41 +186,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    paddingTop: 50,
+    paddingTop: width * .14,
     backgroundColor: Colors.WHITE,
   },
   avatar: {
-    width: 200,
-    height: 200,
+    width: width * .4,
+    height: height * .22,
   },
   name: {
-    fontSize: 24,
+    fontSize: width * .06,
     fontFamily: "outfit-bold",
-    marginTop: 15,
+    marginTop: width * .04,
   },
   email: {
-    fontSize: 16,
+    fontSize: width * .035,
     color: "#7d7d7d",
-    marginTop: 5,
-  },
-  phone: {
-    fontSize: 16,
-    color: "#7d7d7d",
-    marginTop: 5,
+    marginTop: width * .02,
   },
   editBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 30,
-    width: "70%",
+    padding: width * .04,
+    borderRadius: width * .03,
+    marginTop: width * .07,
+    width: width * .7,
   },
   logoutBtn: {
     backgroundColor: "#fa1232",
-    padding: 15,
-    borderRadius: 10,
-    marginTop: 15,
-    width: "70%",
+    padding: width * .04,
+    borderRadius: width * .03,
+    marginTop: width * .04,
+    width: width * .7,
   },
   btnText: {
     textAlign: "center",
@@ -232,12 +228,12 @@ const styles = StyleSheet.create({
     fontFamily: "outfit-bold",
   },
   versionContainer: {
-    marginTop: 300,
+    marginTop: width * .7,
   },
   versionText: {
-    fontSize: 14,
+    fontSize: width * .035,
     color: "#7d7d7d",
-    marginTop: 10,
+    marginTop: width * .03,
   },
   modalContainer: {
     flex: 1,
@@ -247,34 +243,34 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: Colors.WHITE,
-    padding: 20,
-    borderRadius: 15,
-    width: "80%",
+    padding: width * .05,
+    borderRadius: width * .03,
+    width: width * .8,
   },
   modalTitle: {
-    fontSize: 20,
+    fontSize: width * .05,
     fontFamily: "outfit-bold",
-    marginBottom: 15,
+    marginBottom: width * .04,
     textAlign: "center",
   },
   input: {
-    padding: 15,
+    padding: width * .04,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: width * .03,
     borderColor: "#7d7d7d",
-    marginBottom: 15,
+    marginBottom: width * .04,
   },
   saveBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: 15,
-    borderRadius: 10,
-    marginBottom: 10,
+    padding: width * .04,
+    borderRadius: width * .03,
+    marginBottom: width * .04,
     alignItems: "center",
   },
   cancelBtn: {
     backgroundColor: "#fa1232",
-    padding: 15,
-    borderRadius: 10,
+    padding: width * .04,
+    borderRadius: width * .03,
     alignItems: "center",
   },
 });
