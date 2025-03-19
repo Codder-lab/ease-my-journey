@@ -1,24 +1,20 @@
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, FlatList, Image, StyleSheet } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/Colors";
 import HotelCard from "./HotelCard";
+import { width, height } from "../../constants/Dimensions";
 
 export default function HotelList({ hotelList }) {
   return (
-    <View style={{ marginTop: 20 }}>
+    <View style={styles.container}>
       <Text
-        style={{
-          fontFamily: "outfit-bold",
-          fontSize: 20,
-        }}
+        style={styles.title}
       >
         🏨 Hotel Recommendation
       </Text>
       <FlatList
         data={hotelList}
-        style={{
-          marginTop: 20,
-        }}
+        style={styles.hotelList}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => <HotelCard item={item} />}
@@ -26,3 +22,16 @@ export default function HotelList({ hotelList }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: width * 0.05,
+  },
+  title: {
+    fontFamily: "outfit-bold",
+    fontSize: width * 0.05,
+  },
+  hotelList: {
+    marginTop: width * 0.05,
+  }
+});

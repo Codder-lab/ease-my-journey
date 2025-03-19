@@ -1,6 +1,7 @@
-import { View, Text, TouchableOpacity, Linking } from "react-native";
+import { View, Text, TouchableOpacity, Linking, StyleSheet } from "react-native";
 import React from "react";
 import { Colors } from "../../constants/Colors";
+import { width, height } from "../../constants/Dimensions";
 
 export default function FlightInfo({ flightData }) {
   const handleBooking = () => {
@@ -14,61 +15,70 @@ export default function FlightInfo({ flightData }) {
   }
   return (
     <View
-      style={{
-        marginTop: 20,
-        borderWidth: 1,
-        borderColor: Colors.LIGHT_GRAY,
-        padding: 10,
-        borderRadius: 15,
-      }}
+      style={styles.container}
     >
       <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
+        style={styles.flightContainer}
       >
         <Text
-          style={{
-            fontFamily: "outfit-bold",
-            fontSize: 20,
-          }}
+          style={styles.title}
         >
           ✈️ Flights
         </Text>
 
         <TouchableOpacity
         onPress={handleBooking}
-          style={{
-            backgroundColor: Colors.PRIMARY,
-            padding: 10,
-            width: 100,
-            borderRadius: 15,
-          }}
+          style={styles.btn}
         >
           <Text
-            style={{
-              textAlign: "center",
-              color: Colors.WHITE,
-              fontFamily: "outfit",
-            }}
+            style={styles.btnText}
           >
             Book Here
           </Text>
         </TouchableOpacity>
       </View>
       <Text
-        style={{
-          fontFamily: "outfit",
-          fontSize: 17,
-          color: "#7d7d7d",
-          margin: 5,
-        }}
+        style={styles.subtitle}
       >
         Price: ₹ {flightData?.approximatePriceINR} (approx.)
       </Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: width * .05,
+    borderWidth: 1,
+    borderColor: Colors.LIGHT_GRAY,
+    padding: width * .03,
+    borderRadius: width * .03,
+  },
+  flightContainer: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  title: {
+      fontFamily: "outfit-bold",
+      fontSize: width * .05,
+  },
+  btn: {
+    backgroundColor: Colors.PRIMARY,
+    padding: width * .02,
+    width: width * .22,
+    borderRadius: width * .03,
+  },
+  btnText: {
+    textAlign: "center",
+    color: Colors.WHITE,
+    fontFamily: "outfit",
+  },
+  subtitle: {
+    fontFamily: "outfit",
+    fontSize: width * .04,
+    color: "#7d7d7d",
+    margin: width * .015,
+  }
+});
