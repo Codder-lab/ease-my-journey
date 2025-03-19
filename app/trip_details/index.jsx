@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView } from "react-native";
+import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import { Colors } from "../../constants/Colors";
@@ -7,6 +7,7 @@ import FlightInfo from "../../components/TripDetails/FlightInfo";
 import HotelList from "../../components/TripDetails/HotelList";
 import DailyItinerary from "../../components/TripDetails/DailyItinerary";
 import BudgetSummary from "../../components/TripDetails/BudgetSummary";
+import { width, height } from "../../constants/Dimensions";
 
 export default function TripDetails() {
   const navigation = useNavigation();
@@ -45,56 +46,28 @@ export default function TripDetails() {
             "&key=" +
             process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY,
         }}
-        style={{
-          width: "100%",
-          height: 300,
-          borderTopLeftRadius: 0,
-          borderTopRightRadius: 0,
-        }}
+        style={styles.imageContainer}
       />
       <View
-        style={{
-          padding: 15,
-          backgroundColor: Colors.WHITE,
-          height: "100%",
-          marginTop: -30,
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
-        }}
+        style={styles.container}
       >
         <Text
-          style={{
-            fontFamily: "outfit-bold",
-            fontSize: 25,
-          }}
+          style={styles.location}
         >
           {tripDetails?.tripPlan?.tripDetails?.location}
         </Text>
         <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 5,
-            marginTop: 5,
-          }}
+          style={styles.infoContainer}
         >
           <Text
-            style={{
-              fontFamily: "outfit",
-              fontSize: 18,
-              color: "#7d7d7d",
-            }}
+            style={styles.date}
           >
             {moment(formatData(tripDetails.tripData).startDate).format(
               "DD MMM YYYY"
             )}
           </Text>
           <Text
-            style={{
-              fontFamily: "outfit",
-              fontSize: 18,
-              color: "#7d7d7d",
-            }}
+            style={styles.date}
           >
             -{" "}
             {moment(formatData(tripDetails.tripData).endDate).format(
@@ -103,12 +76,7 @@ export default function TripDetails() {
           </Text>
         </View>
         <Text
-          style={{
-            fontFamily: "outfit",
-            fontSize: 17,
-            marginTop: 5,
-            color: "#7d7d7d",
-          }}
+          style={styles.title}
         >
           {formatData(tripDetails.tripData)?.traveller?.icon}{" "}
           {formatData(tripDetails.tripData)?.traveller?.title}
@@ -131,3 +99,41 @@ export default function TripDetails() {
     </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  imageContainer: {
+    width: width * 1,
+    height: height * 0.4,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  container: {
+    padding: width * .05,
+    backgroundColor: Colors.WHITE,
+    height: "100%",
+    marginTop: -30,
+    borderTopLeftRadius: width * .065,
+    borderTopRightRadius: width * .065,
+  },
+  location: {
+    fontFamily: "outfit-bold",
+    fontSize: width * .06,
+  },
+  infoContainer: {
+    display: "flex",
+    flexDirection: "row",
+    gap: width * .01,
+    marginTop: width * .01,
+  },
+  date: {
+    fontFamily: "outfit",
+    fontSize: width * .043,
+    color: "#7d7d7d",
+  },
+  title: {
+    fontFamily: "outfit",
+    fontSize: width * .043,
+    marginTop: width * .015,
+    color: "#7d7d7d",
+  }
+});

@@ -1,7 +1,8 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity , StyleSheet } from "react-native";
 import React from "react";
 import moment from "moment";
 import { useRouter } from "expo-router";
+import { width, height } from "../../constants/Dimensions";
 
 export default function UserTripCard({ trip }) {
   const formatData = (data) => {
@@ -18,13 +19,7 @@ export default function UserTripCard({ trip }) {
           },
         });
       }}
-      style={{
-        marginTop: 20,
-        display: "flex",
-        flexDirection: "row",
-        gap: 10,
-        alignItems: "center",
-      }}
+      style={styles.tripContainer}
     >
       <Image
         source={{
@@ -34,30 +29,18 @@ export default function UserTripCard({ trip }) {
             "&key=" +
             process.env.EXPO_PUBLIC_GOOGLE_MAP_KEY,
         }}
-        style={{
-          width: 100,
-          height: 100,
-          borderRadius: 15,
-        }}
+        style={styles.imgContainer}
       />
-      <View style={{ flex: 1, marginRight: 10 }}>
+      <View style={styles.tripDetailContainer}>
         <Text
-          style={{
-            fontFamily: "outfit-medium",
-            fontSize: 16,
-            flexShrink: 1, // Prevents overflow and allows shrinking
-          }}
+          style={styles.location}
           numberOfLines={1} // Keeps text to a single line and truncates with "..."
           ellipsizeMode="tail" // Adds "..." at the end if text overflows
         >
           {trip.tripPlan?.tripDetails?.location}
         </Text>
         <Text
-          style={{
-            fontFamily: "outfit",
-            fontSize: 12,
-            color: "#7d7d7d",
-          }}
+          style={styles.date}
         >
           {moment(formatData(trip.tripData).startDate).format("DD MMM YYYY")} - {moment(formatData(trip.tripData).endDate).format("DD MMM YYYY")}
         </Text>
@@ -65,3 +48,32 @@ export default function UserTripCard({ trip }) {
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({
+  tripContainer: {
+    marginTop: width * .05,
+    display: "flex",
+    flexDirection: "row",
+    gap: width * .04,
+    alignItems: "center",
+  },
+  imgContainer: {
+    width: width * .25,
+    height: height * .11,
+    borderRadius: width * .03,
+  },
+  tripDetailContainer: {
+    flex: 1,
+    marginRight: width * .05,
+  },
+  location: {
+    fontFamily: "outfit-medium",
+    fontSize: width * .035,
+    flexShrink: 1,
+  },
+  date: {
+    fontFamily: "outfit",
+    fontSize: width * .03,
+    color: "#7d7d7d",
+  }
+});
