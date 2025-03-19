@@ -391,7 +391,11 @@ export default function Discover() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: width * .06, backgroundColor: "#fff" },
+  container: { 
+    flex: 1,
+    padding: width * .06,
+    backgroundColor: "#fff"
+  },
   title: {
     fontSize: width * .08,
     //fontWeight: "bold",
@@ -420,8 +424,18 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
-  name: { fontSize: width * .04, fontWeight: "600", marginTop: width * .01, marginBottom: width * .01, fontFamily: "outfit" },
-  rating: { color: Colors.PRIMARY, marginTop: width * .01, marginBottom: width * .01, fontFamily: "outfit" },
+  name: {
+    fontSize: width * .04,
+    fontWeight: "600",
+    marginTop: width * .01,
+    marginBottom: width * .01,
+    fontFamily: "outfit" },
+  rating: {
+    color: Colors.PRIMARY,
+    marginTop: width * .01,
+    marginBottom: width * .01,
+    fontFamily: "outfit"
+  },
   cardFooter: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -440,7 +454,12 @@ const styles = StyleSheet.create({
     height: height * .2,
     borderRadius: 10,
   },
-  price: { fontSize: width * .04, color: "#00A86B", marginTop: width * .01, fontFamily: "outfit" },
+  price: {
+    fontSize: width * .04,
+    color: "#00A86B",
+    marginTop: width * .01,
+    fontFamily: "outfit"
+  },
   loadMoreBtn: {
     backgroundColor: Colors.PRIMARY,
     padding: width * .03,
@@ -449,7 +468,10 @@ const styles = StyleSheet.create({
     marginVertical: width * .01,
     alignSelf: "flex-end",
   },
-  loadMoreText: { color: "#fff", fontFamily: "outfit" },
+  loadMoreText: {
+    color: "#fff",
+    fontFamily: "outfit"
+  },
   loadingIndicator: {
     position: "absolute",
     top: "50%",
