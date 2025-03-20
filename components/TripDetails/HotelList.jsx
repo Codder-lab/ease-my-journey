@@ -25,13 +25,13 @@ export default function HotelList({ hotelList }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: width * 0.05,
+    marginTop: width * .05,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * 0.05,
+    fontSize: width * .05,
   },
   hotelList: {
-    marginTop: width * 0.05,
+    marginTop: width * .05,
   }
 });

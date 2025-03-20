@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
   },
   location: {
     fontFamily: "outfit-medium",
-    fontSize: width * .035,
+    fontSize: width * .038,
     flexShrink: 1,
   },
   date: {
     fontFamily: "outfit",
-    fontSize: width * .03,
+    fontSize: width * .033,
     color: "#7d7d7d",
   }
 });

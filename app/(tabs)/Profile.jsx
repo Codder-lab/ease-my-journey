@@ -228,12 +228,12 @@ const styles = StyleSheet.create({
     fontFamily: "outfit-bold",
   },
   versionContainer: {
-    marginTop: width * .7,
+    marginTop: width * .68,
   },
   versionText: {
     fontSize: width * .035,
     color: "#7d7d7d",
-    marginTop: width * .03,
+    marginTop: width * .01,
   },
   modalContainer: {
     flex: 1,

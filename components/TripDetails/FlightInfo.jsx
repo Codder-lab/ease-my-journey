@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .02,
+    padding: width * .018,
     width: width * .22,
     borderRadius: width * .03,
   },
@@ -74,6 +74,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit",
+    fontSize: width * .035,
+    marginVertical: width * .01,
   },
   subtitle: {
     fontFamily: "outfit",

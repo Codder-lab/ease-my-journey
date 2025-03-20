@@ -96,23 +96,23 @@ const styles = StyleSheet.create({
   },
   location: {
     fontFamily: "outfit-medium",
-    fontSize: width * .035,
+    fontSize: width * .038,
     flexShrink: 1,
   },
   date: {
     fontFamily: "outfit",
-    fontSize: width * .03,
+    fontSize: width * .033,
     color: "#7d7d7d",
   },
   btn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .04,
+    padding: width * .03,
     borderRadius: width * .03,
   },
   btnText: {
     color: Colors.WHITE,
     textAlign: "center",
     fontFamily: "outfit-medium",
-    fontSize: width * .026,
+    fontSize: width * .028,
   }
 });
