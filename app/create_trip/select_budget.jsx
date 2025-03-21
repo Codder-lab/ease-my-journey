@@ -46,25 +46,15 @@ export default function SelectBudget() {
   };
 
   return (
-    <View
-      style={styles.container}
-    >
-      <Text
-        style={styles.title}
-      >
-        Budget
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Budget</Text>
 
       <View
         style={{
-          marginTop: width * .03,
+          marginTop: width * 0.03,
         }}
       >
-        <Text
-          style={ styles.subtitle }
-        >
-          Choose spending habit for your trip
-        </Text>
+        <Text style={styles.subtitle}>Choose spending habit for your trip</Text>
 
         <FlatList
           data={SelectBudgetOptions}
@@ -81,15 +71,8 @@ export default function SelectBudget() {
         />
       </View>
 
-      <TouchableOpacity
-        style={styles.btn}
-        onPress={() => onClickContinue()}
-      >
-        <Text
-          style={styles.btnText}
-        >
-          Continue
-        </Text>
+      <TouchableOpacity style={styles.btn} onPress={() => onClickContinue()}>
+        <Text style={styles.btnText}>Continue</Text>
       </TouchableOpacity>
     </View>
   );
@@ -97,33 +80,33 @@ export default function SelectBudget() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: width * .2,
-    padding: width * .08,
+    paddingTop: width * 0.2,
+    padding: width * 0.08,
     backgroundColor: Colors.WHITE,
     height: height * 1.5,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * .09,
-    marginTop: width * .05,
+    fontSize: width * 0.09,
+    marginTop: width * 0.05,
     color: Colors.ICON_DARKER,
   },
   subtitle: {
     fontFamily: "outfit-bold",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     color: Colors.ICON_DARK,
-    marginBottom: width * .03,
+    marginBottom: width * 0.03,
   },
   btn: {
-    padding: width * .04,
+    padding: width * 0.04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: width * .04,
-    marginTop: width * .05
+    borderRadius: width * 0.04,
+    marginTop: width * 0.05,
   },
   btnText: {
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit-medium",
-    fontSize: width * .05,
-  }
+    fontSize: width * 0.05,
+  },
 });

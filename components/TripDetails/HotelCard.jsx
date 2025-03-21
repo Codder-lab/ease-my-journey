@@ -1,6 +1,17 @@
-import { View, Text, Image, Linking, TouchableOpacity, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  Linking,
+  TouchableOpacity,
+  StyleSheet,
+} from "react-native";
 import React, { useEffect, useState } from "react";
-import { GetPhotoRef, GetHotelRatings, GetGoogleMapsPlaceId } from "../../services/GooglePlaceAPI";
+import {
+  GetPhotoRef,
+  GetHotelRatings,
+  GetGoogleMapsPlaceId,
+} from "../../services/GooglePlaceAPI";
 import { Colors } from "../../constants/Colors";
 import { width, height } from "../../constants/Dimensions";
 
@@ -33,9 +44,13 @@ export default function HotelCard({ item }) {
   const OpenGoogleMaps = () => {
     const url = placeId
       ? `https://www.google.com/maps/search/?api=1&query=place_id:${placeId}`
-      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.hotelName)}`;
+      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          item.hotelName
+        )}`;
 
-    Linking.openURL(url).catch((err) => console.error("Failed to open Google Maps:", err));
+    Linking.openURL(url).catch((err) =>
+      console.error("Failed to open Google Maps:", err)
+    );
   };
 
   return (
@@ -49,25 +64,19 @@ export default function HotelCard({ item }) {
             style={styles.imgContainer}
           />
         ) : (
-          <View
-            style={styles.defaultImgContainer}
-          >
+          <View style={styles.defaultImgContainer}>
             <Text>Loading...</Text>
           </View>
         )}
 
         <View style={styles.hotelContainer}>
-          <Text style={styles.hotelName}>
-            {item.hotelName}
-          </Text>
+          <Text style={styles.hotelName}>{item.hotelName}</Text>
 
           <Text style={styles.price}>
             ₹ {item.pricePerNightINR}/night (approx.)
           </Text>
 
-          <Text style={styles.ratings}>
-            Ratings: ⭐{hotelRating}
-          </Text>
+          <Text style={styles.ratings}>Ratings: ⭐{hotelRating}</Text>
         </View>
       </View>
     </TouchableOpacity>
@@ -106,5 +115,5 @@ const styles = StyleSheet.create({
   ratings: {
     fontFamily: "outfit",
     color: Colors.PRIMARY,
-  }
+  },
 });

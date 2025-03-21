@@ -7,11 +7,7 @@ import { width, height } from "../../constants/Dimensions";
 export default function HotelList({ hotelList }) {
   return (
     <View style={styles.container}>
-      <Text
-        style={styles.title}
-      >
-        🏨 Hotel Recommendation
-      </Text>
+      <Text style={styles.title}>🏨 Hotel Recommendation</Text>
       <FlatList
         data={hotelList}
         style={styles.hotelList}
@@ -25,13 +21,13 @@ export default function HotelList({ hotelList }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: width * .05,
+    marginTop: width * 0.05,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
   },
   hotelList: {
-    marginTop: width * .05,
-  }
+    marginTop: width * 0.05,
+  },
 });

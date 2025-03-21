@@ -41,7 +41,9 @@ export default function ForgotPassword() {
         <Ionicons name="arrow-back" size={24} color={Colors.ICON_DARKER} />
       </TouchableOpacity>
       <Text style={styles.title}>Forgot Password?</Text>
-      <Text style={styles.subtitle}>Enter your email to reset your password</Text>
+      <Text style={styles.subtitle}>
+        Enter your email to reset your password
+      </Text>
 
       <View style={styles.inputContainer}>
         <TextInput
@@ -73,53 +75,53 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: width * .1,
+    padding: width * 0.1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: width * .1,
-    left: width * .05,
+    top: width * 0.1,
+    left: width * 0.05,
     zIndex: 10,
   },
   title: {
-    fontSize: width * .09,
+    fontSize: width * 0.09,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: width * .02,
+    marginBottom: width * 0.02,
   },
   subtitle: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: width * .1,
+    marginBottom: width * 0.1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: width * .05,
-    padding: width * .03,
-    marginBottom: width * .05,
-    borderWidth: width * .005,
+    borderRadius: width * 0.05,
+    padding: width * 0.03,
+    marginBottom: width * 0.05,
+    borderWidth: width * 0.005,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: Colors.ICON_DARKER,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .05,
-    borderRadius: width * .05,
+    padding: width * 0.05,
+    borderRadius: width * 0.05,
     alignItems: "center",
   },
   signInText: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },

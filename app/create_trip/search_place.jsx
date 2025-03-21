@@ -26,9 +26,7 @@ export default function SearchPlace() {
   }, [tripData]);
 
   return (
-    <View
-      style={styles.container}
-    >
+    <View style={styles.container}>
       <GooglePlacesAutocomplete
         placeholder="Search Place..."
         fetchDetails={true}
@@ -57,8 +55,8 @@ export default function SearchPlace() {
         styles={{
           textInputContainer: {
             borderWidth: 1,
-            borderRadius: width * .01,
-            marginTop: width * .1,
+            borderRadius: width * 0.01,
+            marginTop: width * 0.1,
             borderColor: Colors.PRIMARY,
           },
         }}
@@ -69,9 +67,9 @@ export default function SearchPlace() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: width * .08,
-    paddingTop: width * .12,
+    padding: width * 0.08,
+    paddingTop: width * 0.12,
     backgroundColor: Colors.WHITE,
     height: height * 1.5,
-  }
-})
+  },
+});

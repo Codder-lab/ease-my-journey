@@ -12,9 +12,7 @@ export default function UserTripList({ userTrips }) {
 
   return (
     <View>
-      <View
-        style={styles.container}
-      >
+      <View style={styles.container}>
         {LatestTrip?.locationInfo?.photoRef ? (
           <Image
             source={{
@@ -32,9 +30,7 @@ export default function UserTripList({ userTrips }) {
             style={styles.imgContainer}
           />
         )}
-        <View
-          style={styles.infoContainer}
-        >
+        <View style={styles.infoContainer}>
           <View>
             <Text
               style={styles.location}
@@ -43,10 +39,9 @@ export default function UserTripList({ userTrips }) {
             >
               {userTrips[0]?.tripPlan?.tripDetails?.location}
             </Text>
-            <Text
-              style={styles.date}
-            >
-              {moment(LatestTrip.startDate).format("DD MMM YYYY")} - {moment(LatestTrip.endDate).format("DD MMM YYYY")}
+            <Text style={styles.date}>
+              {moment(LatestTrip.startDate).format("DD MMM YYYY")} -{" "}
+              {moment(LatestTrip.endDate).format("DD MMM YYYY")}
             </Text>
           </View>
           <View>
@@ -61,11 +56,7 @@ export default function UserTripList({ userTrips }) {
               }
               style={styles.btn}
             >
-              <Text
-                style={styles.btnText}
-              >
-                See your plan
-              </Text>
+              <Text style={styles.btnText}>See your plan</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -80,39 +71,39 @@ export default function UserTripList({ userTrips }) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: width * .05,
+    marginTop: width * 0.05,
   },
   imgContainer: {
     width: "100%",
     height: 240,
     objectFit: "cover",
-    borderRadius: width * .03,
+    borderRadius: width * 0.03,
   },
   infoContainer: {
-    marginTop: width * .03,
+    marginTop: width * 0.03,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
   },
   location: {
     fontFamily: "outfit-medium",
-    fontSize: width * .038,
+    fontSize: width * 0.038,
     flexShrink: 1,
   },
   date: {
     fontFamily: "outfit",
-    fontSize: width * .033,
+    fontSize: width * 0.033,
     color: "#7d7d7d",
   },
   btn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .03,
-    borderRadius: width * .03,
+    padding: width * 0.03,
+    borderRadius: width * 0.03,
   },
   btnText: {
     color: Colors.WHITE,
     textAlign: "center",
     fontFamily: "outfit-medium",
-    fontSize: width * .028,
-  }
+    fontSize: width * 0.028,
+  },
 });

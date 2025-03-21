@@ -12,23 +12,11 @@ export default function OptionCard({ option, selectedOption }) {
       ]}
     >
       <View>
-        <Text
-          style={styles.title}
-        >
-          {option.title}
-        </Text>
-        <Text
-          style={styles.desc}
-        >
-          {option.desc}
-        </Text>
+        <Text style={styles.title}>{option.title}</Text>
+        <Text style={styles.desc}>{option.desc}</Text>
       </View>
 
-      <Text
-        style={styles.icon}
-      >
-        {option.icon}
-      </Text>
+      <Text style={styles.icon}>{option.icon}</Text>
     </View>
   );
 }
@@ -53,5 +41,5 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-  }
+  },
 });
