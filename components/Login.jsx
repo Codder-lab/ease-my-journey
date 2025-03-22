@@ -18,14 +18,8 @@ export default function Login() {
         }}
       />
       <View style={styles.container}>
-        <Text
-          style={styles.title}
-        >
-          EaseMyJourney
-        </Text>
-        <Text
-          style={styles.subtitle}
-        >
+        <Text style={styles.title}>EaseMyJourney</Text>
+        <Text style={styles.subtitle}>
           Discover your next adventure effortlessly. Personalized itineraries at
           your fingertips. Travel smarter with AI-driven insights.
         </Text>
@@ -34,11 +28,7 @@ export default function Login() {
           style={styles.button}
           onPress={() => router.push("auth/signin")}
         >
-          <Text
-            style={styles.btnText}
-          >
-            Get Started
-          </Text>
+          <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -50,35 +40,35 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.WHITE,
     marginTop: -20,
     height: height * 1.5,
-    borderTopLeftRadius: width * .065,
-    borderTopRightRadius: width * .065,
-    padding: width * .08,
+    borderTopLeftRadius: width * 0.065,
+    borderTopRightRadius: width * 0.065,
+    padding: width * 0.08,
   },
   title: {
-    fontSize: width * .08,
+    fontSize: width * 0.08,
     fontFamily: "outfit-bold",
     fontWeight: "bold",
     textAlign: "center",
-    marginTop: width * .05,
+    marginTop: width * 0.05,
     color: Colors.ICON_DARK,
   },
   subtitle: {
     fontFamily: "outfit",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     textAlign: "center",
     color: "#7d7d7d",
-    marginTop: width * .05,
+    marginTop: width * 0.05,
   },
   button: {
-    padding: width * .04,
+    padding: width * 0.04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: width * .1,
-    marginTop: width * .1,
+    borderRadius: width * 0.1,
+    marginTop: width * 0.1,
   },
   btnText: {
     color: Colors.WHITE,
     textAlign: "center",
     fontFamily: "outfit",
     fontSize: 17,
-  }
+  },
 });

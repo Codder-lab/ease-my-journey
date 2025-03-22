@@ -7,10 +7,7 @@ import {
   ToastAndroid,
 } from "react-native";
 import React, { useState, useRef } from "react";
-import {
-  PhoneAuthProvider,
-  signInWithCredential,
-} from "firebase/auth";
+import { PhoneAuthProvider, signInWithCredential } from "firebase/auth";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
 import { auth } from "../../../configs/FirebaseConfig";
 import { Colors } from "../../../constants/Colors";
@@ -123,7 +120,12 @@ export default function LoginWithPhone() {
           onPress={sendOTP}
           disabled={timer > 0}
         >
-          <Text style={{ color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY, fontFamily: "outfit" }}>
+          <Text
+            style={{
+              color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
+              fontFamily: "outfit",
+            }}
+          >
             {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
           </Text>
         </TouchableOpacity>
@@ -154,56 +156,56 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: width * .1,
+    padding: width * 0.1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: width * .1,
-    left: width * .05,
+    top: width * 0.1,
+    left: width * 0.05,
     zIndex: 10,
   },
   title: {
-    fontSize: width * .08,
+    fontSize: width * 0.08,
     textAlign: "center",
-    marginBottom: width * .1,
+    marginBottom: width * 0.1,
     color: Colors.ICON_DARKER,
     fontFamily: "outfit-bold",
   },
   inputContainer: {
     backgroundColor: "#f5f5f5",
-    borderRadius: width * .05,
-    padding: width * .03,
-    marginBottom: width * .06,
+    borderRadius: width * 0.05,
+    padding: width * 0.03,
+    marginBottom: width * 0.06,
     borderWidth: width * 0.005,
     borderColor: "#ddd",
   },
   input: {
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: Colors.ICON_DARKER,
     fontFamily: "outfit",
   },
   sendOtpBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .05,
-    borderRadius: width * .05,
+    padding: width * 0.05,
+    borderRadius: width * 0.05,
     alignItems: "center",
-    marginBottom: width * .05,
+    marginBottom: width * 0.05,
   },
   verifyOtpBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .05,
-    borderRadius: width * .05,
+    padding: width * 0.05,
+    borderRadius: width * 0.05,
     alignItems: "center",
   },
   btnText: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     color: Colors.WHITE,
     fontFamily: "outfit-bold",
   },
   resendButton: {
     alignSelf: "flex-end",
     marginTop: -10,
-    marginBottom: width * .05,
+    marginBottom: width * 0.05,
   },
 });

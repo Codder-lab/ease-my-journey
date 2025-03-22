@@ -7,11 +7,7 @@ import { width, height } from "../../constants/Dimensions";
 export default function HotelList({ hotelList }) {
   return (
     <View style={styles.container}>
-      <Text
-        style={styles.title}
-      >
-        🏨 Hotel Recommendation
-      </Text>
+      <Text style={styles.title}>🏨 Hotel Recommendation</Text>
       <FlatList
         data={hotelList}
         style={styles.hotelList}
@@ -33,5 +29,5 @@ const styles = StyleSheet.create({
   },
   hotelList: {
     marginTop: width * 0.05,
-  }
+  },
 });

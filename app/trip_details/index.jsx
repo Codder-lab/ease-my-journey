@@ -48,36 +48,24 @@ export default function TripDetails() {
         }}
         style={styles.imageContainer}
       />
-      <View
-        style={styles.container}
-      >
-        <Text
-          style={styles.location}
-        >
+      <View style={styles.container}>
+        <Text style={styles.location}>
           {tripDetails?.tripPlan?.tripDetails?.location}
         </Text>
-        <View
-          style={styles.infoContainer}
-        >
-          <Text
-            style={styles.date}
-          >
+        <View style={styles.infoContainer}>
+          <Text style={styles.date}>
             {moment(formatData(tripDetails.tripData).startDate).format(
               "DD MMM YYYY"
             )}
           </Text>
-          <Text
-            style={styles.date}
-          >
+          <Text style={styles.date}>
             -{" "}
             {moment(formatData(tripDetails.tripData).endDate).format(
               "DD MMM YYYY"
             )}
           </Text>
         </View>
-        <Text
-          style={styles.title}
-        >
+        <Text style={styles.title}>
           {formatData(tripDetails.tripData)?.traveller?.icon}{" "}
           {formatData(tripDetails.tripData)?.traveller?.title}
         </Text>
@@ -108,32 +96,32 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 0,
   },
   container: {
-    padding: width * .05,
+    padding: width * 0.05,
     backgroundColor: Colors.WHITE,
     height: "100%",
     marginTop: -30,
-    borderTopLeftRadius: width * .065,
-    borderTopRightRadius: width * .065,
+    borderTopLeftRadius: width * 0.065,
+    borderTopRightRadius: width * 0.065,
   },
   location: {
     fontFamily: "outfit-bold",
-    fontSize: width * .06,
+    fontSize: width * 0.06,
   },
   infoContainer: {
     display: "flex",
     flexDirection: "row",
-    gap: width * .01,
-    marginTop: width * .01,
+    gap: width * 0.01,
+    marginTop: width * 0.01,
   },
   date: {
     fontFamily: "outfit",
-    fontSize: width * .043,
+    fontSize: width * 0.043,
     color: "#7d7d7d",
   },
   title: {
     fontFamily: "outfit",
-    fontSize: width * .043,
-    marginTop: width * .015,
+    fontSize: width * 0.043,
+    marginTop: width * 0.015,
     color: "#7d7d7d",
-  }
+  },
 });

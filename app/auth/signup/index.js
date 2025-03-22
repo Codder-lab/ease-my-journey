@@ -105,7 +105,12 @@ export default function SignUp() {
   };
 
   const OnCreateAccount = async () => {
-    if (!email.trim() || !password.trim() || !fullName.trim() || !phoneNumber.trim()) {
+    if (
+      !email.trim() ||
+      !password.trim() ||
+      !fullName.trim() ||
+      !phoneNumber.trim()
+    ) {
       ToastAndroid.show("Please fill all fields", ToastAndroid.LONG);
       return;
     }
@@ -117,7 +122,11 @@ export default function SignUp() {
 
     try {
       // Create user with email and password
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
 
       // Update user profile with full name
@@ -146,7 +155,10 @@ export default function SignUp() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => router.push("auth/signin")} style={styles.backButton}>
+      <TouchableOpacity
+        onPress={() => router.push("auth/signin")}
+        style={styles.backButton}
+      >
         <Ionicons name="arrow-back" size={24} color={Colors.ICON_DARKER} />
       </TouchableOpacity>
 
@@ -190,15 +202,19 @@ export default function SignUp() {
         {/* Show "Send OTP" button only if OTP is not sent */}
         {!isOtpSent && (
           <TouchableOpacity onPress={sendOTP}>
-            <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit", fontSize: width * .035 }}>Send OTP</Text>
+            <Text style={styles.sendOtp}>Send OTP</Text>
           </TouchableOpacity>
         )}
       </View>
 
       {/* Show "Resend OTP" button only if OTP is sent */}
       {isOtpSent && (
-        <TouchableOpacity onPress={sendOTP} disabled={timer > 0} style={styles.resendButton}>
-          <Text style={{ color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY, fontFamily: "outfit" }}>
+        <TouchableOpacity
+          onPress={sendOTP}
+          disabled={timer > 0}
+          style={styles.resendButton}
+        >
+          <Text style={styles.resendText}>
             {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
           </Text>
         </TouchableOpacity>
@@ -216,14 +232,14 @@ export default function SignUp() {
           {/* Show Verify button or Success Animation */}
           {!showSuccessAnimation ? (
             <TouchableOpacity onPress={verifyOTP}>
-              <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Verify</Text>
+              <Text style={styles.verify}>Verify</Text>
             </TouchableOpacity>
           ) : (
             <LottieView
               source={require("../../../assets/images/success.json")} // Path to your animation file
               autoPlay
               loop={false}
-              style={{ width: 30, height: 30 }} // Adjust size as needed
+              style={styles.success} // Adjust size as needed
             />
           )}
         </View>
@@ -250,10 +266,10 @@ export default function SignUp() {
         <Text style={styles.signInText}>Create Account</Text>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: width * .05 }}>
+      <View style={styles.alreadyContainer}>
         <Text style={styles.signUpText}>Already have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signin")}>
-          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign In</Text>
+          <Text style={styles.alreadySignInText}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -264,63 +280,89 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: width * .1,
+    padding: width * 0.1,
     justifyContent: "center",
   },
   backButton: {
     position: "absolute",
-    top: width * .1,
-    left: width * .05,
+    top: width * 0.1,
+    left: width * 0.05,
     zIndex: 10,
   },
   title: {
-    fontSize: width * .1,
+    fontSize: width * 0.1,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: width * .03,
+    marginBottom: width * 0.03,
   },
   subtitle: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: width * .1,
+    marginBottom: width * 0.1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: width * .05,
-    padding: width * .03,
-    marginBottom: width * .05,
-    borderWidth: width * .003,
+    borderRadius: width * 0.05,
+    padding: width * 0.03,
+    marginBottom: width * 0.05,
+    borderWidth: width * 0.003,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: Colors.ICON_DARKER,
+  },
+  sendOtp: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
+    fontSize: width * 0.035,
   },
   resendButton: {
     alignSelf: "flex-end",
     marginTop: -15,
-    marginBottom: width * .05,
+    marginBottom: width * 0.05,
+  },
+  resendText: {
+    color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
+    fontFamily: "outfit",
+  },
+  verify: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
+  },
+  success: {
+    width: 30,
+    height: 30,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .05,
-    borderRadius: width * .05,
+    padding: width * 0.05,
+    borderRadius: width * 0.05,
     alignItems: "center",
   },
   signInText: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },
   signUpText: {
     fontFamily: "outfit",
     color: Colors.ICON_DARK,
+  },
+  alreadyContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: width * 0.05,
+  },
+  alreadySignInText: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
   },
 });

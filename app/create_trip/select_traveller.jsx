@@ -37,25 +37,15 @@ export default function SelectTraveller() {
 
   return (
     <ScrollView>
-      <View
-        style={styles.container}
-      >
-        <Text
-          style={styles.title}
-        >
-          Who's Travelling?
-        </Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Who's Travelling?</Text>
 
         <View
           style={{
-            marginTop: width * .04,
+            marginTop: width * 0.04,
           }}
         >
-          <Text
-            style={styles.subtitle}
-          >
-            Choose your travellers
-          </Text>
+          <Text style={styles.subtitle}>Choose your travellers</Text>
           <FlatList
             data={SelectTravellerList}
             renderItem={({ item, index }) => (
@@ -73,9 +63,7 @@ export default function SelectTraveller() {
           />
         </View>
 
-        <TouchableOpacity
-          style={styles.btn}
-        >
+        <TouchableOpacity style={styles.btn}>
           <Link
             href={"/create_trip/select_dates"}
             style={{
@@ -83,11 +71,7 @@ export default function SelectTraveller() {
               textAlign: "center",
             }}
           >
-            <Text
-              style={styles.btnText}
-            >
-              Continue
-            </Text>
+            <Text style={styles.btnText}>Continue</Text>
           </Link>
         </TouchableOpacity>
       </View>
@@ -97,32 +81,32 @@ export default function SelectTraveller() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: width * .06,
-    paddingTop: width * .16,
+    padding: width * 0.06,
+    paddingTop: width * 0.16,
     backgroundColor: Colors.WHITE,
     height: height * 1.05,
   },
   title: {
-    fontSize: width * .09,
+    fontSize: width * 0.09,
     fontFamily: "outfit-bold",
-    marginTop: width * .05,
+    marginTop: width * 0.05,
     color: Colors.ICON_DARKER,
   },
   subtitle: {
     fontFamily: "outfit-bold",
-    fontSize: width * .06,
+    fontSize: width * 0.06,
     color: Colors.ICON_DARK,
   },
   btn: {
-    padding: width * .04,
+    padding: width * 0.04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: width * .03,
-    marginTop: width * .06,
+    borderRadius: width * 0.03,
+    marginTop: width * 0.06,
   },
   btnText: {
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit-medium",
-    fontSize: width * .05,
-  }
+    fontSize: width * 0.05,
+  },
 });

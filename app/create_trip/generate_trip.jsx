@@ -54,17 +54,9 @@ export default function GenerateTrip() {
   };
 
   return (
-    <View
-      style={styles.container}
-    >
-      <Text
-        style={styles.title}
-      >
-        Please Wait...
-      </Text>
-      <Text
-        style={styles.subtitle}
-      >
+    <View style={styles.container}>
+      <Text style={styles.title}>Please Wait...</Text>
+      <Text style={styles.subtitle}>
         We are working to generate your dream trip.
       </Text>
       <Image
@@ -73,37 +65,33 @@ export default function GenerateTrip() {
         contentFit="contain"
       />
 
-      <Text
-        style={styles.backText}
-      >
-        Do not Go Back
-      </Text>
+      <Text style={styles.backText}>Do not Go Back</Text>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    padding: width * .05,
-    paddingTop: width * .1,
+    padding: width * 0.05,
+    paddingTop: width * 0.1,
     backgroundColor: Colors.WHITE,
     height: height * 1.5,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * .1,
+    fontSize: width * 0.1,
     textAlign: "center",
   },
   subtitle: {
     fontFamily: "outfit-medium",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     textAlign: "center",
-    marginTop: width * .05,
+    marginTop: width * 0.05,
   },
   backText: {
     fontFamily: "outfit",
     color: "#7d7d7d",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     textAlign: "center",
-  }
+  },
 });

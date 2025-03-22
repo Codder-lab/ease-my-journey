@@ -21,32 +21,22 @@ export default function ReviewTrip() {
   }, []);
 
   return (
-    <View
-      style={styles.container}
-    >
-      <Text
-        style={styles.title}
-      >
-        Review your trip
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Review your trip</Text>
       <View
         style={{
-          marginTop: width * .05,
+          marginTop: width * 0.05,
         }}
       >
-        <Text
-          style={styles.subtitle}
-        >
+        <Text style={styles.subtitle}>
           Before generating your trip, please review your selection
         </Text>
 
         {/* Destination Info */}
-        <View
-          style={styles.desContainer}
-        >
+        <View style={styles.desContainer}>
           <Text
             style={{
-              fontSize: width * .07,
+              fontSize: width * 0.07,
             }}
           >
             📍
@@ -56,26 +46,18 @@ export default function ReviewTrip() {
               flex: 1,
             }}
           >
-            <Text
-              style={styles.infoTitle}
-            >
-              Destination
-            </Text>
-            <Text
-              style={styles.infoSubtitle}
-            >
+            <Text style={styles.infoTitle}>Destination</Text>
+            <Text style={styles.infoSubtitle}>
               {tripData?.locationInfo?.name}
             </Text>
           </View>
         </View>
 
         {/* Selected Date Info */}
-        <View
-          style={styles.desContainer}
-        >
+        <View style={styles.desContainer}>
           <Text
             style={{
-              fontSize: width * .07,
+              fontSize: width * 0.07,
             }}
           >
             📅
@@ -85,14 +67,8 @@ export default function ReviewTrip() {
               flex: 1,
             }}
           >
-            <Text
-              style={styles.infoTitle}
-            >
-              Travel Date
-            </Text>
-            <Text
-              style={styles.infoSubtitle}
-            >
+            <Text style={styles.infoTitle}>Travel Date</Text>
+            <Text style={styles.infoSubtitle}>
               {moment(tripData?.startDate).format("MMM DD, YYYY") +
                 "  to " +
                 moment(tripData?.endDate).format("MMM DD, YYYY") +
@@ -103,12 +79,10 @@ export default function ReviewTrip() {
         </View>
 
         {/* Traveller Info */}
-        <View
-          style={styles.desContainer}
-        >
+        <View style={styles.desContainer}>
           <Text
             style={{
-              fontSize: width * .07,
+              fontSize: width * 0.07,
             }}
           >
             🚌
@@ -118,26 +92,18 @@ export default function ReviewTrip() {
               flex: 1,
             }}
           >
-            <Text
-              style={styles.infoTitle}
-            >
-              Who is Travelling?
-            </Text>
-            <Text
-              style={styles.infoSubtitle}
-            >
+            <Text style={styles.infoTitle}>Who is Travelling?</Text>
+            <Text style={styles.infoSubtitle}>
               {tripData?.traveller?.title}
             </Text>
           </View>
         </View>
 
         {/* Budget Info */}
-        <View
-          style={styles.desContainer}
-        >
+        <View style={styles.desContainer}>
           <Text
             style={{
-              fontSize: width * .07,
+              fontSize: width * 0.07,
             }}
           >
             💰
@@ -147,16 +113,8 @@ export default function ReviewTrip() {
               flex: 1,
             }}
           >
-            <Text
-              style={styles.infoTitle}
-            >
-              Budget
-            </Text>
-            <Text
-              style={styles.infoSubtitle}
-            >
-              {tripData?.budget}
-            </Text>
+            <Text style={styles.infoTitle}>Budget</Text>
+            <Text style={styles.infoSubtitle}>{tripData?.budget}</Text>
           </View>
         </View>
       </View>
@@ -165,11 +123,7 @@ export default function ReviewTrip() {
         style={styles.btn}
         onPress={() => router.replace("/create_trip/generate_trip")}
       >
-        <Text
-          style={styles.btnText}
-        >
-          Build my trip
-        </Text>
+        <Text style={styles.btnText}>Build my trip</Text>
       </TouchableOpacity>
     </View>
   );
@@ -177,48 +131,48 @@ export default function ReviewTrip() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: width * .05,
-    paddingTop: width * .1,
+    padding: width * 0.05,
+    paddingTop: width * 0.1,
     backgroundColor: Colors.WHITE,
     height: height * 1.5,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * .08,
-    marginTop: width * .05,
+    fontSize: width * 0.08,
+    marginTop: width * 0.05,
     color: Colors.ICON_DARKER,
   },
   subtitle: {
     fontFamily: "outfit-bold",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     color: Colors.ICON_DARK,
   },
   desContainer: {
-    marginTop: width * .05,
+    marginTop: width * 0.05,
     display: "flex",
     flexDirection: "row",
-    gap: width * .05,
+    gap: width * 0.05,
   },
   infoTitle: {
     fontFamily: "outfit-medium",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     color: "#7d7d7d",
   },
   infoSubtitle: {
     fontFamily: "outfit",
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     flexWrap: "wrap",
   },
   btn: {
-    padding: width * .04,
+    padding: width * 0.04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: width * .04,
-    marginTop: width * .1,
+    borderRadius: width * 0.04,
+    marginTop: width * 0.1,
   },
   btnText: {
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit-medium",
-    fontSize: width * .05,
-  }
+    fontSize: width * 0.05,
+  },
 });

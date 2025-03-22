@@ -10,7 +10,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigation, useRouter } from "expo-router";
 import { Colors } from "../../../constants/Colors";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { signInWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+} from "firebase/auth";
 import { auth } from "../../../configs/FirebaseConfig";
 import { width, height } from "../../../constants/Dimensions";
 
@@ -39,14 +42,23 @@ export default function SignIn() {
         } else {
           sendEmailVerification(user)
             .then(() => {
-              ToastAndroid.show("Email not verified. Verification email sent.", ToastAndroid.LONG);
+              ToastAndroid.show(
+                "Email not verified. Verification email sent.",
+                ToastAndroid.LONG
+              );
               auth.signOut().then(() => {
-                ToastAndroid.show("Please verify your email to continue.", ToastAndroid.LONG);
+                ToastAndroid.show(
+                  "Please verify your email to continue.",
+                  ToastAndroid.LONG
+                );
               });
             })
             .catch((error) => {
               console.log("Verification Email Error:", error);
-              ToastAndroid.show("Failed to send verification email.", ToastAndroid.LONG);
+              ToastAndroid.show(
+                "Failed to send verification email.",
+                ToastAndroid.LONG
+              );
             });
         }
       })
@@ -116,10 +128,18 @@ export default function SignIn() {
         <Text style={styles.phoneSignInText}>Login with Phone Number</Text>
       </TouchableOpacity>
 
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: width * .05 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          justifyContent: "center",
+          marginTop: width * 0.05,
+        }}
+      >
         <Text style={styles.signUpText}>Don't have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signup")}>
-          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>Sign Up</Text>
+          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>
+            Sign Up
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -130,70 +150,70 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: Colors.WHITE,
-    padding: width * .1,
+    padding: width * 0.1,
     justifyContent: "center",
   },
   title: {
-    fontSize: width * .1,
+    fontSize: width * 0.1,
     fontFamily: "outfit-bold",
     textAlign: "center",
     color: Colors.ICON_DARKER,
-    marginBottom: width * .03,
+    marginBottom: width * 0.03,
     //marginBottom: 10,
   },
   subtitle: {
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     fontFamily: "outfit",
     textAlign: "center",
     color: Colors.ICON_DARK,
-    marginBottom: width * .1,
+    marginBottom: width * 0.1,
   },
   inputContainer: {
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#f5f5f5",
-    borderRadius: width * .05,
-    padding: width * .03,
-    marginBottom: width * .05,
+    borderRadius: width * 0.05,
+    padding: width * 0.03,
+    marginBottom: width * 0.05,
     borderWidth: 1,
     borderColor: "#ddd",
   },
   input: {
     flex: 1,
     fontFamily: "outfit",
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: Colors.ICON_DARKER,
   },
   forgotText: {
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     fontFamily: "outfit",
     textAlign: "right",
     color: Colors.ICON_DARKER,
-    marginBottom: width * .07,
+    marginBottom: width * 0.07,
     marginTop: -10,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .05,
-    borderRadius: width * .05,
+    padding: width * 0.05,
+    borderRadius: width * 0.05,
     alignItems: "center",
-    marginBottom: width * .05,
+    marginBottom: width * 0.05,
   },
   signInText: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit-bold",
     color: Colors.WHITE,
   },
   phoneSignInBtn: {
     backgroundColor: Colors.WHITE,
-    padding: width * .05,
+    padding: width * 0.05,
     borderColor: Colors.ICON_DARKER,
-    borderWidth: width * .003,
-    borderRadius: width * .05,
+    borderWidth: width * 0.003,
+    borderRadius: width * 0.05,
     alignItems: "center",
   },
   phoneSignInText: {
-    fontSize: width * .04,
+    fontSize: width * 0.04,
     fontFamily: "outfit-bold",
     color: Colors.ICON_DARKER,
   },

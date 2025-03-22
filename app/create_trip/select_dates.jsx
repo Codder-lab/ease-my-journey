@@ -51,14 +51,8 @@ export default function SelectDate() {
   };
 
   return (
-    <View
-      style={styles.container}
-    >
-      <Text
-        style={styles.title}
-      >
-        Travel Dates
-      </Text>
+    <View style={styles.container}>
+      <Text style={styles.title}>Travel Dates</Text>
       <View
         style={{
           marginTop: 30,
@@ -77,15 +71,8 @@ export default function SelectDate() {
           }}
         />
       </View>
-      <TouchableOpacity
-        onPress={OnDateSelection}
-        style={styles.btn}
-      >
-        <Text
-          style={styles.btnText}
-        >
-          Continue
-        </Text>
+      <TouchableOpacity onPress={OnDateSelection} style={styles.btn}>
+        <Text style={styles.btnText}>Continue</Text>
       </TouchableOpacity>
     </View>
   );
@@ -93,27 +80,27 @@ export default function SelectDate() {
 
 const styles = StyleSheet.create({
   container: {
-    padding: width * .06,
-    paddingTop: width * .18,
+    padding: width * 0.06,
+    paddingTop: width * 0.18,
     backgroundColor: Colors.WHITE,
     height: height * 1.5,
   },
   title: {
     fontFamily: "outfit-bold",
-    fontSize: width * .09,
-    marginTop: width * .05,
+    fontSize: width * 0.09,
+    marginTop: width * 0.05,
     color: Colors.ICON_DARKER,
   },
   btn: {
-    padding: width * .04,
+    padding: width * 0.04,
     backgroundColor: Colors.PRIMARY,
-    borderRadius: width * .04,
-    marginTop: width * .08,
+    borderRadius: width * 0.04,
+    marginTop: width * 0.08,
   },
   btnText: {
     textAlign: "center",
     color: Colors.WHITE,
     fontFamily: "outfit-medium",
-    fontSize: width * .04,
-  }
+    fontSize: width * 0.04,
+  },
 });

@@ -1,4 +1,4 @@
-import { View, Text, Image, TouchableOpacity , StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
 import moment from "moment";
 import { useRouter } from "expo-router";
@@ -39,10 +39,9 @@ export default function UserTripCard({ trip }) {
         >
           {trip.tripPlan?.tripDetails?.location}
         </Text>
-        <Text
-          style={styles.date}
-        >
-          {moment(formatData(trip.tripData).startDate).format("DD MMM YYYY")} - {moment(formatData(trip.tripData).endDate).format("DD MMM YYYY")}
+        <Text style={styles.date}>
+          {moment(formatData(trip.tripData).startDate).format("DD MMM YYYY")} -{" "}
+          {moment(formatData(trip.tripData).endDate).format("DD MMM YYYY")}
         </Text>
       </View>
     </TouchableOpacity>
@@ -51,29 +50,29 @@ export default function UserTripCard({ trip }) {
 
 const styles = StyleSheet.create({
   tripContainer: {
-    marginTop: width * .05,
+    marginTop: width * 0.05,
     display: "flex",
     flexDirection: "row",
-    gap: width * .04,
+    gap: width * 0.04,
     alignItems: "center",
   },
   imgContainer: {
-    width: width * .25,
-    height: height * .11,
-    borderRadius: width * .03,
+    width: width * 0.25,
+    height: height * 0.11,
+    borderRadius: width * 0.03,
   },
   tripDetailContainer: {
     flex: 1,
-    marginRight: width * .05,
+    marginRight: width * 0.05,
   },
   location: {
     fontFamily: "outfit-medium",
-    fontSize: width * .035,
+    fontSize: width * 0.038,
     flexShrink: 1,
   },
   date: {
     fontFamily: "outfit",
-    fontSize: width * .03,
+    fontSize: width * 0.033,
     color: "#7d7d7d",
-  }
+  },
 });

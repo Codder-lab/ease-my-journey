@@ -117,31 +117,31 @@ export default function Profile() {
   };
 
   return (
-      <View style={styles.container}>
-        <Image
-          source={{
-            uri: "https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg",
-          }}
-          style={styles.avatar}
-        />
+    <View style={styles.container}>
+      <Image
+        source={{
+          uri: "https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-male-user-profile-vector-illustration-isolated-background-man-profile-sign-business-concept_157943-38764.jpg",
+        }}
+        style={styles.avatar}
+      />
 
-        <Text style={styles.name}>{userData.fullName}</Text>
-        <Text style={styles.email}>{userData.email}</Text>
+      <Text style={styles.name}>{userData.fullName}</Text>
+      <Text style={styles.email}>{userData.email}</Text>
 
-        <TouchableOpacity style={styles.editBtn} onPress={openEditModal}>
-          <Text style={styles.btnText}>Edit Profile</Text>
-        </TouchableOpacity>
+      <TouchableOpacity style={styles.editBtn} onPress={openEditModal}>
+        <Text style={styles.btnText}>Edit Profile</Text>
+      </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleLogout} style={styles.logoutBtn}>
-          <Text style={styles.logoutText}>Logout</Text>
-        </TouchableOpacity>
-        <View style={styles.versionContainer}>
-          <Text style={styles.versionText}>
-            App Version: {Constants.expoConfig.version}
-          </Text>
-        </View>
+      <TouchableOpacity onPress={handleLogout} style={styles.logoutBtn}>
+        <Text style={styles.logoutText}>Logout</Text>
+      </TouchableOpacity>
+      <View style={styles.versionContainer}>
+        <Text style={styles.versionText}>
+          App Version: {Constants.expoConfig.version}
+        </Text>
+      </View>
 
-        <Modal visible={modalVisible} transparent animationType="slide">
+      <Modal visible={modalVisible} transparent animationType="slide">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Profile</Text>
@@ -178,7 +178,7 @@ export default function Profile() {
           </View>
         </View>
       </Modal>
-      </View>
+    </View>
   );
 }
 
@@ -186,36 +186,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    paddingTop: width * .14,
+    paddingTop: width * 0.14,
     backgroundColor: Colors.WHITE,
   },
   avatar: {
-    width: width * .4,
-    height: height * .22,
+    width: width * 0.4,
+    height: height * 0.22,
   },
   name: {
-    fontSize: width * .06,
+    fontSize: width * 0.06,
     fontFamily: "outfit-bold",
-    marginTop: width * .04,
+    marginTop: width * 0.04,
   },
   email: {
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: "#7d7d7d",
-    marginTop: width * .02,
+    marginTop: width * 0.02,
   },
   editBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .04,
-    borderRadius: width * .03,
-    marginTop: width * .07,
-    width: width * .7,
+    padding: width * 0.04,
+    borderRadius: width * 0.03,
+    marginTop: width * 0.07,
+    width: width * 0.7,
   },
   logoutBtn: {
     backgroundColor: "#fa1232",
-    padding: width * .04,
-    borderRadius: width * .03,
-    marginTop: width * .04,
-    width: width * .7,
+    padding: width * 0.04,
+    borderRadius: width * 0.03,
+    marginTop: width * 0.04,
+    width: width * 0.7,
   },
   btnText: {
     textAlign: "center",
@@ -228,12 +228,12 @@ const styles = StyleSheet.create({
     fontFamily: "outfit-bold",
   },
   versionContainer: {
-    marginTop: width * .7,
+    marginTop: width * 0.68,
   },
   versionText: {
-    fontSize: width * .035,
+    fontSize: width * 0.035,
     color: "#7d7d7d",
-    marginTop: width * .03,
+    marginTop: width * 0.01,
   },
   modalContainer: {
     flex: 1,
@@ -243,34 +243,34 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     backgroundColor: Colors.WHITE,
-    padding: width * .05,
-    borderRadius: width * .03,
-    width: width * .8,
+    padding: width * 0.05,
+    borderRadius: width * 0.03,
+    width: width * 0.8,
   },
   modalTitle: {
-    fontSize: width * .05,
+    fontSize: width * 0.05,
     fontFamily: "outfit-bold",
-    marginBottom: width * .04,
+    marginBottom: width * 0.04,
     textAlign: "center",
   },
   input: {
-    padding: width * .04,
+    padding: width * 0.04,
     borderWidth: 1,
-    borderRadius: width * .03,
+    borderRadius: width * 0.03,
     borderColor: "#7d7d7d",
-    marginBottom: width * .04,
+    marginBottom: width * 0.04,
   },
   saveBtn: {
     backgroundColor: Colors.PRIMARY,
-    padding: width * .04,
-    borderRadius: width * .03,
-    marginBottom: width * .04,
+    padding: width * 0.04,
+    borderRadius: width * 0.03,
+    marginBottom: width * 0.04,
     alignItems: "center",
   },
   cancelBtn: {
     backgroundColor: "#fa1232",
-    padding: width * .04,
-    borderRadius: width * .03,
+    padding: width * 0.04,
+    borderRadius: width * 0.03,
     alignItems: "center",
   },
 });
