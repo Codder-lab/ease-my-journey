@@ -202,15 +202,7 @@ export default function SignUp() {
         {/* Show "Send OTP" button only if OTP is not sent */}
         {!isOtpSent && (
           <TouchableOpacity onPress={sendOTP}>
-            <Text
-              style={{
-                color: Colors.PRIMARY,
-                fontFamily: "outfit",
-                fontSize: width * 0.035,
-              }}
-            >
-              Send OTP
-            </Text>
+            <Text style={styles.sendOtp}>Send OTP</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -222,12 +214,7 @@ export default function SignUp() {
           disabled={timer > 0}
           style={styles.resendButton}
         >
-          <Text
-            style={{
-              color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
-              fontFamily: "outfit",
-            }}
-          >
+          <Text style={styles.resendText}>
             {timer > 0 ? `Resend OTP in ${timer}s` : "Resend OTP"}
           </Text>
         </TouchableOpacity>
@@ -245,16 +232,14 @@ export default function SignUp() {
           {/* Show Verify button or Success Animation */}
           {!showSuccessAnimation ? (
             <TouchableOpacity onPress={verifyOTP}>
-              <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>
-                Verify
-              </Text>
+              <Text style={styles.verify}>Verify</Text>
             </TouchableOpacity>
           ) : (
             <LottieView
               source={require("../../../assets/images/success.json")} // Path to your animation file
               autoPlay
               loop={false}
-              style={{ width: 30, height: 30 }} // Adjust size as needed
+              style={styles.success} // Adjust size as needed
             />
           )}
         </View>
@@ -281,18 +266,10 @@ export default function SignUp() {
         <Text style={styles.signInText}>Create Account</Text>
       </TouchableOpacity>
 
-      <View
-        style={{
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: width * 0.05,
-        }}
-      >
+      <View style={styles.alreadyContainer}>
         <Text style={styles.signUpText}>Already have an account? </Text>
         <TouchableOpacity onPress={() => router.replace("auth/signin")}>
-          <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>
-            Sign In
-          </Text>
+          <Text style={styles.alreadySignInText}>Sign In</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -342,10 +319,27 @@ const styles = StyleSheet.create({
     fontSize: width * 0.035,
     color: Colors.ICON_DARKER,
   },
+  sendOtp: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
+    fontSize: width * 0.035,
+  },
   resendButton: {
     alignSelf: "flex-end",
     marginTop: -15,
     marginBottom: width * 0.05,
+  },
+  resendText: {
+    color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
+    fontFamily: "outfit",
+  },
+  verify: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
+  },
+  success: {
+    width: 30,
+    height: 30,
   },
   signInBtn: {
     backgroundColor: Colors.PRIMARY,
@@ -361,5 +355,14 @@ const styles = StyleSheet.create({
   signUpText: {
     fontFamily: "outfit",
     color: Colors.ICON_DARK,
+  },
+  alreadyContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: width * 0.05,
+  },
+  alreadySignInText: {
+    color: Colors.PRIMARY,
+    fontFamily: "outfit",
   },
 });
