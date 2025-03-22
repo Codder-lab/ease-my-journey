@@ -43,23 +43,6 @@ export default function DailyItinerary({ dailyItinerary = {} }) {
               </Text>
             </View>
           ))}
-          {/* <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-end",
-            }}
-          >
-            <TouchableOpacity
-              style={{
-                backgroundColor: Colors.PRIMARY,
-                padding: 8,
-                borderRadius: 10,
-              }}
-            >
-              <Ionicons name="navigate" size={24} color="white" />
-            </TouchableOpacity>
-          </View> */}
         </View>
       ))}
     </View>

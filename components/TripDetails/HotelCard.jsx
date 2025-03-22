@@ -32,7 +32,6 @@ export default function HotelCard({ item }) {
         GetGoogleMapsPlaceId(item.hotelName),
       ]);
 
-      // Extract photo reference if available
       setPhotoRef(photo?.results?.[0]?.photos?.[0]?.photo_reference || null);
       setHotelRating(rating);
       setPlaceId(place);

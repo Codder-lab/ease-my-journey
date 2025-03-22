@@ -26,7 +26,7 @@ export default function Login() {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => router.push("auth/signin")}
+          onPress={() => router.push("auth/signin")} //Redirect to signin page
         >
           <Text style={styles.btnText}>Get Started</Text>
         </TouchableOpacity>

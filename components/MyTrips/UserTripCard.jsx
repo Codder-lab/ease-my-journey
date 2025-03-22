@@ -34,8 +34,8 @@ export default function UserTripCard({ trip }) {
       <View style={styles.tripDetailContainer}>
         <Text
           style={styles.location}
-          numberOfLines={1} // Keeps text to a single line and truncates with "..."
-          ellipsizeMode="tail" // Adds "..." at the end if text overflows
+          numberOfLines={1}
+          ellipsizeMode="tail"
         >
           {trip.tripPlan?.tripDetails?.location}
         </Text>

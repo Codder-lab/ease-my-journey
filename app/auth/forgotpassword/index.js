@@ -60,13 +60,6 @@ export default function ForgotPassword() {
       <TouchableOpacity style={styles.signInBtn} onPress={handlePasswordReset}>
         <Text style={styles.signInText}>Send Reset Email</Text>
       </TouchableOpacity>
-
-      {/* <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 20 }}>
-        <Text style={styles.signUpText}>Remember your password? </Text>
-        <TouchableOpacity onPress={() => router.replace("auth/signin")}>
-          <Text style={{ color: Colors.PRIMARY }}>Sign In</Text>
-        </TouchableOpacity>
-      </View> */}
     </View>
   );
 }

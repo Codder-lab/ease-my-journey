@@ -51,7 +51,7 @@ export default function LoginWithPhone() {
       const phoneProvider = new PhoneAuthProvider(auth);
       const verificationId = await phoneProvider.verifyPhoneNumber(
         `+91${phoneNumber}`,
-        recaptchaVerifier.current // Pass the ref correctly
+        recaptchaVerifier.current
       );
 
       console.log("Verification ID:", verificationId);

@@ -20,7 +20,7 @@ import {
 import { auth, db } from "../../../configs/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
 import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
-import LottieView from "lottie-react-native"; // Import Lottie
+import LottieView from "lottie-react-native";
 import { width, height } from "../../../constants/Dimensions";
 
 // Suppress the specific warning
@@ -41,7 +41,7 @@ export default function SignUp() {
   const [verificationId, setVerificationId] = useState(null);
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [timer, setTimer] = useState(0);
-  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false); // State for animation
+  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
   const recaptchaVerifier = useRef(null);
 
   useEffect(() => {
@@ -50,8 +50,9 @@ export default function SignUp() {
     });
   }, []);
 
+  // Start Resend OTP timer
   const startTimer = () => {
-    setTimer(60); // 60 seconds cooldown
+    setTimer(60);
     setIsOtpSent(true);
 
     const interval = setInterval(() => {
@@ -66,6 +67,7 @@ export default function SignUp() {
     }, 1000);
   };
 
+  // Send otp logic
   const sendOTP = async () => {
     if (phoneNumber.length !== 10) {
       ToastAndroid.show("Enter a valid phone number", ToastAndroid.LONG);
@@ -87,6 +89,7 @@ export default function SignUp() {
     }
   };
 
+  // Verify otp logic
   const verifyOTP = async () => {
     if (!verificationId || !otp) {
       ToastAndroid.show("Please enter OTP", ToastAndroid.LONG);
@@ -104,6 +107,7 @@ export default function SignUp() {
     }
   };
 
+  // Account creation logic
   const OnCreateAccount = async () => {
     if (
       !email.trim() ||
@@ -236,7 +240,7 @@ export default function SignUp() {
             </TouchableOpacity>
           ) : (
             <LottieView
-              source={require("../../../assets/images/success.json")} // Path to your animation file
+              source={require("../../../assets/images/success.json")}
               autoPlay
               loop={false}
               style={styles.success} // Adjust size as needed
