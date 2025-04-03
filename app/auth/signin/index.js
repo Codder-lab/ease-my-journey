@@ -25,13 +25,13 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
 
-  // console.log(width, height);
-
+  // Signin Logic
   const OnSignIn = () => {
     if (!email.trim() || !password.trim()) {
       ToastAndroid.show("Please Enter Email & Password", ToastAndroid.LONG);
       return;
     }
+    // Signin using email and password 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -40,6 +40,7 @@ export default function SignIn() {
           console.log("User Login Successful: ", user.uid);
           console.log(user);
         } else {
+          // Email Verification Logic
           sendEmailVerification(user)
             .then(() => {
               ToastAndroid.show(

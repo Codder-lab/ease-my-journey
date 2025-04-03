@@ -8,7 +8,7 @@ import {
   Modal,
   TextInput,
   ToastAndroid,
-  ActivityIndicator, // Import ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { router, useNavigation, useRouter } from "expo-router";
@@ -29,7 +29,7 @@ export default function Profile() {
   const [modalVisible, setModalVisible] = useState(false);
   const [editedName, setEditedName] = useState("");
   const [editedEmail, setEditedEmail] = useState("");
-  const [loading, setLoading] = useState(false); // State for loading indicator
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function Profile() {
       return;
     }
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const currentUser = auth.currentUser;
@@ -106,7 +106,7 @@ export default function Profile() {
     } catch (error) {
       Alert.alert("Update Error", error.message);
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
 
@@ -160,10 +160,10 @@ export default function Profile() {
             <TouchableOpacity
               style={styles.saveBtn}
               onPress={handleEditProfile}
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
               {loading ? (
-                <ActivityIndicator color={Colors.WHITE} /> // Show spinner if loading
+                <ActivityIndicator color={Colors.WHITE} />
               ) : (
                 <Text style={styles.btnText}>Save</Text>
               )}
@@ -171,7 +171,7 @@ export default function Profile() {
             <TouchableOpacity
               style={styles.cancelBtn}
               onPress={() => setModalVisible(false)}
-              disabled={loading} // Disable button while loading
+              disabled={loading}
             >
               <Text style={styles.logoutText}>Cancel</Text>
             </TouchableOpacity>

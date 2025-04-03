@@ -18,8 +18,8 @@ export default function Discover() {
   const [trending, setTrending] = useState([]);
   const [visibleTrending, setVisibleTrending] = useState([]);
   const [search, setSearch] = useState("");
-  const [destLoadCount, setDestLoadCount] = useState(20); // Number of destinations to load
-  const [trendLoadCount, setTrendLoadCount] = useState(5); // Number of trending trips to load
+  const [destLoadCount, setDestLoadCount] = useState(20);
+  const [trendLoadCount, setTrendLoadCount] = useState(5);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -375,16 +375,6 @@ export default function Discover() {
               horizontal
               showsHorizontalScrollIndicator={false}
             />
-
-            {/* {visibleDestinations.length < destinations.length && (
-            <TouchableOpacity
-              style={styles.loadMoreBtn}
-              onPress={loadMoreDestinations}
-            >
-              <Text style={styles.loadMoreText}>Load More</Text>
-            </TouchableOpacity>
-          )} */}
-
             <Text style={styles.title}>Trending Trips & Deals</Text>
           </>
         }
@@ -421,7 +411,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: width * 0.08,
-    //fontWeight: "bold",
     marginBottom: width * 0.05,
     marginTop: width * 0.05,
     fontFamily: "outfit-bold",
