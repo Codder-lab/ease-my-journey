@@ -28,7 +28,6 @@
     "expo-constants": "~17.0.4",
     "expo-dev-client": "~5.0.12",
     "expo-env": "^1.1.1",
-    "expo-firebase-recaptcha": "^2.3.1",
     "expo-font": "~13.0.3",
     "expo-haptics": "~14.0.1",
     "expo-image": "^2.0.4",
