@@ -14,13 +14,13 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   createUserWithEmailAndPassword,
   updateProfile,
-  updatePhoneNumber,
-  PhoneAuthProvider,
+  //updatePhoneNumber,
+  //PhoneAuthProvider,
 } from "firebase/auth";
 import { auth, db } from "../../../configs/FirebaseConfig";
 import { doc, setDoc } from "firebase/firestore";
-import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
-import LottieView from "lottie-react-native";
+//import { FirebaseRecaptchaVerifierModal } from "expo-firebase-recaptcha";
+//import LottieView from "lottie-react-native";
 import { width, height } from "../../../constants/Dimensions";
 
 // Suppress the specific warning
@@ -36,13 +36,13 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [otp, setOtp] = useState("");
-  const [verificationId, setVerificationId] = useState(null);
-  const [isOtpSent, setIsOtpSent] = useState(false);
-  const [timer, setTimer] = useState(0);
-  const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
-  const recaptchaVerifier = useRef(null);
+  //const [phoneNumber, setPhoneNumber] = useState("");
+  //const [otp, setOtp] = useState("");
+  //const [verificationId, setVerificationId] = useState(null);
+  //const [isOtpSent, setIsOtpSent] = useState(false);
+  //const [timer, setTimer] = useState(0);
+  //const [showSuccessAnimation, setShowSuccessAnimation] = useState(false);
+  //const recaptchaVerifier = useRef(null);
 
   useEffect(() => {
     navigation.setOptions({
@@ -51,78 +51,78 @@ export default function SignUp() {
   }, []);
 
   // Start Resend OTP timer
-  const startTimer = () => {
-    setTimer(60);
-    setIsOtpSent(true);
+  // const startTimer = () => {
+  //   setTimer(60);
+  //   setIsOtpSent(true);
 
-    const interval = setInterval(() => {
-      setTimer((prev) => {
-        if (prev === 1) {
-          clearInterval(interval);
-          setIsOtpSent(false);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-  };
+  //   const interval = setInterval(() => {
+  //     setTimer((prev) => {
+  //       if (prev === 1) {
+  //         clearInterval(interval);
+  //         setIsOtpSent(false);
+  //         return 0;
+  //       }
+  //       return prev - 1;
+  //     });
+  //   }, 1000);
+  // };
 
-  // Send otp logic
-  const sendOTP = async () => {
-    if (phoneNumber.length !== 10) {
-      ToastAndroid.show("Enter a valid phone number", ToastAndroid.LONG);
-      return;
-    }
+  // // Send otp logic
+  // const sendOTP = async () => {
+  //   if (phoneNumber.length !== 10) {
+  //     ToastAndroid.show("Enter a valid phone number", ToastAndroid.LONG);
+  //     return;
+  //   }
 
-    const phoneProvider = new PhoneAuthProvider(auth);
-    try {
-      const verificationId = await phoneProvider.verifyPhoneNumber(
-        `+91${phoneNumber}`,
-        recaptchaVerifier.current
-      );
-      setVerificationId(verificationId);
-      ToastAndroid.show("OTP Sent!", ToastAndroid.LONG);
-      startTimer(); // Start cooldown timer
-    } catch (error) {
-      ToastAndroid.show("Failed to send OTP", ToastAndroid.LONG);
-      console.error(error);
-    }
-  };
+  //   const phoneProvider = new PhoneAuthProvider(auth);
+  //   try {
+  //     const verificationId = await phoneProvider.verifyPhoneNumber(
+  //       `+91${phoneNumber}`,
+  //       recaptchaVerifier.current
+  //     );
+  //     setVerificationId(verificationId);
+  //     ToastAndroid.show("OTP Sent!", ToastAndroid.LONG);
+  //     startTimer(); // Start cooldown timer
+  //   } catch (error) {
+  //     ToastAndroid.show("Failed to send OTP", ToastAndroid.LONG);
+  //     console.error(error);
+  //   }
+  // };
 
-  // Verify otp logic
-  const verifyOTP = async () => {
-    if (!verificationId || !otp) {
-      ToastAndroid.show("Please enter OTP", ToastAndroid.LONG);
-      return;
-    }
-    try {
-      const credential = PhoneAuthProvider.credential(verificationId, otp);
-      ToastAndroid.show("OTP Verified!", ToastAndroid.LONG);
+  // // Verify otp logic
+  // const verifyOTP = async () => {
+  //   if (!verificationId || !otp) {
+  //     ToastAndroid.show("Please enter OTP", ToastAndroid.LONG);
+  //     return;
+  //   }
+  //   try {
+  //     const credential = PhoneAuthProvider.credential(verificationId, otp);
+  //     ToastAndroid.show("OTP Verified!", ToastAndroid.LONG);
 
-      // Show success animation
-      setShowSuccessAnimation(true);
-    } catch (error) {
-      ToastAndroid.show("Invalid OTP", ToastAndroid.LONG);
-      console.error("Error verifying OTP:", error);
-    }
-  };
+  //     // Show success animation
+  //     setShowSuccessAnimation(true);
+  //   } catch (error) {
+  //     ToastAndroid.show("Invalid OTP", ToastAndroid.LONG);
+  //     console.error("Error verifying OTP:", error);
+  //   }
+  // };
 
   // Account creation logic
   const OnCreateAccount = async () => {
     if (
       !email.trim() ||
       !password.trim() ||
-      !fullName.trim() ||
-      !phoneNumber.trim()
+      !fullName.trim() //||
+      //!phoneNumber.trim()
     ) {
       ToastAndroid.show("Please fill all fields", ToastAndroid.LONG);
       return;
     }
 
-    if (!verificationId || !otp) {
-      ToastAndroid.show("Please verify your phone number", ToastAndroid.LONG);
-      return;
-    }
+    // if (!verificationId || !otp) {
+    //   ToastAndroid.show("Please verify your phone number", ToastAndroid.LONG);
+    //   return;
+    // }
 
     try {
       // Create user with email and password
@@ -137,14 +137,14 @@ export default function SignUp() {
       await updateProfile(user, { displayName: fullName });
 
       // Verify and link phone number
-      const credential = PhoneAuthProvider.credential(verificationId, otp);
-      await updatePhoneNumber(user, credential);
+      // const credential = PhoneAuthProvider.credential(verificationId, otp);
+      // await updatePhoneNumber(user, credential);
 
       // Save user data in Firestore
       await setDoc(doc(db, "users", user.uid), {
         fullName: fullName,
         email: email,
-        phoneNumber: phoneNumber,
+        //phoneNumber: phoneNumber,
         createdAt: new Date(),
       });
 
@@ -166,11 +166,11 @@ export default function SignUp() {
         <Ionicons name="arrow-back" size={24} color={Colors.ICON_DARKER} />
       </TouchableOpacity>
 
-      <FirebaseRecaptchaVerifierModal
+      {/* <FirebaseRecaptchaVerifierModal
         ref={recaptchaVerifier}
         firebaseConfig={auth.app.options}
         attemptInvisibleVerification={true}
-      />
+      /> */}
 
       <Text style={styles.title}>Create New Account</Text>
       <Text style={styles.subtitle}>Sign up to get started</Text>
@@ -195,7 +195,7 @@ export default function SignUp() {
         />
       </View>
 
-      <View style={styles.inputContainer}>
+      {/* <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
           placeholder="Phone Number"
@@ -204,15 +204,15 @@ export default function SignUp() {
           onChangeText={setPhoneNumber}
         />
         {/* Show "Send OTP" button only if OTP is not sent */}
-        {!isOtpSent && (
+        {/* {!isOtpSent && (
           <TouchableOpacity onPress={sendOTP}>
             <Text style={styles.sendOtp}>Send OTP</Text>
           </TouchableOpacity>
         )}
-      </View>
+      </View> */}
 
       {/* Show "Resend OTP" button only if OTP is sent */}
-      {isOtpSent && (
+      {/* {isOtpSent && (
         <TouchableOpacity
           onPress={sendOTP}
           disabled={timer > 0}
@@ -234,7 +234,7 @@ export default function SignUp() {
             onChangeText={setOtp}
           />
           {/* Show Verify button or Success Animation */}
-          {!showSuccessAnimation ? (
+          {/* {!showSuccessAnimation ? (
             <TouchableOpacity onPress={verifyOTP}>
               <Text style={styles.verify}>Verify</Text>
             </TouchableOpacity>
@@ -247,7 +247,7 @@ export default function SignUp() {
             />
           )}
         </View>
-      )}
+      )} */}
 
       <View style={styles.inputContainer}>
         <TextInput
@@ -333,10 +333,10 @@ const styles = StyleSheet.create({
     marginTop: -15,
     marginBottom: width * 0.05,
   },
-  resendText: {
-    color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
-    fontFamily: "outfit",
-  },
+  // resendText: {
+  //   color: timer > 0 ? Colors.ICON_DARK : Colors.PRIMARY,
+  //   fontFamily: "outfit",
+  // },
   verify: {
     color: Colors.PRIMARY,
     fontFamily: "outfit",

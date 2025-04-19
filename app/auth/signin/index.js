@@ -122,12 +122,12 @@ export default function SignIn() {
         <Text style={styles.signInText}>Sign In</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity
+      {/* <TouchableOpacity
         style={styles.phoneSignInBtn}
         onPress={() => router.push("auth/loginWithPhoneNumber")}
       >
         <Text style={styles.phoneSignInText}>Login with Phone Number</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       <View
         style={{
@@ -137,7 +137,7 @@ export default function SignIn() {
         }}
       >
         <Text style={styles.signUpText}>Don't have an account? </Text>
-        <TouchableOpacity onPress={() => router.replace("auth/signup")}>
+        <TouchableOpacity onPress={() => router.push("auth/signup")}>
           <Text style={{ color: Colors.PRIMARY, fontFamily: "outfit" }}>
             Sign Up
           </Text>
