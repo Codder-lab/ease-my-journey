@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#f5f5f5",
     borderRadius: width * 0.05,
-    padding: width * 0.03,
+    padding: width * 0.025,
     marginBottom: width * 0.05,
     borderWidth: width * 0.003,
     borderColor: "#ddd",
